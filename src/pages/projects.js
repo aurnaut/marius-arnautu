@@ -1,21 +1,14 @@
-import React from "react";
-import { Link } from "gatsby";
-
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 import Img from 'gatsby-image';
 
-const IndexPage = ({ data}) => {
+const ProjectsPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
   return (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-
-    <div className="post-list">
-    {posts.map(post => (
+    <Layout>
+      <div className="post-list">
+        {posts.map(post => (
           <div key={post.node.id} className="post-list__item">
             <div className="post-list__thumbnail">
               <Link to={post.node.fields.slug}>
@@ -39,15 +32,16 @@ const IndexPage = ({ data}) => {
           </div>
         ))}
       </div>
-  </Layout>
+    </Layout>
   );
 };
 
-export default IndexPage;
+export default ProjectsPage;
 
+// Get all markdown data, in descending order by date, and grab the id, excerpt, slug, date, and title
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(filter: { frontmatter: { type: { in: ["design", "development"] } }}, sort: { order: DESC, fields: [frontmatter___date] }) {
       edges {
         node {
           id
