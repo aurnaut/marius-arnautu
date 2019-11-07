@@ -1,8 +1,9 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import Logo from '../images/marius-arnautu-logo.svg';
+import TodayDate from '../components/todaydate';
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -24,19 +25,12 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}
         >
-          {siteTitle}
+          <img className="logo" src={Logo} alt="Marius Arnautu" />
         </Link>
       </h1>
     </div>
+    <TodayDate />
   </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
