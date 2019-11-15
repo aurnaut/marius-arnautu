@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import Logo from '../images/marius-arnautu-logo.svg';
+import Logo from '../images/marius-arnautu-logo-thin.svg';
 import TodayDate from '../components/todaydate';
 
 const Header = () => (

@@ -1,0 +1,74 @@
+@keyframes rotateRectangle {
+  0% {
+    transform: translateX(-50%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(225deg);
+  }
+}
+
+@keyframes moveTriangle {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  24.99% {
+    transform: translateY(-130px) rotate(0);
+  }
+  25% {
+    transform: translateY(-130px) rotate(90deg);
+  }
+  49.99% {
+    transform: translateY(-130px) translateX(130px) rotate(90deg)
+  }
+  50% {
+    transform: translateY(-130px) translateX(130px) rotate(180deg);
+  }
+  74.99% {
+    transform: translateY(0) translateX(130px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(0) translateX(130px) rotate(270deg);
+  }
+  99.99% {
+    transform: translateY(0) translateX(0) rotate(270deg);
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(360deg);
+  }
+}
+
+@keyframes scaleCircle {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(0.5);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes moveLine {
+  0% {
+    transform: translateX(106px);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes jumpingSquare {
+  0% {
+    transform: translateY(0);
+    border-radius: 0;
+  }
+  50% {
+    transform: translateY(-30px);
+    border-radius: 12px;
+  }
+  100% {
+    transform: translateY(0);
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,70 @@
+.graphics-wrapper {
+  position: absolute;
+  top: 95px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  .green-square {
+    position: absolute;
+    right: 70px;
+    top: 2vh;
+    width: 37px;
+    height: 37px;
+    background: $green;
+    animation: jumpingSquare 5s ease infinite;
+  }
+
+  .red-line {
+    position: absolute;
+    right: 0;
+    top: 20vh;
+    width: 106px;
+    height: 2px;
+    background: $red;
+    animation: moveLine 30s linear infinite;
+  }
+
+  .blue-rectangle {
+    position: absolute;
+    left: 50%;
+    top: 25vh;
+    width: 271px;
+    height: 119px;
+    transform: translateX(-50%) rotate(45deg);
+    background: $blue;
+    animation: rotateRectangle 60s linear infinite;
+  }
+
+  .purple-triangle {
+    position: absolute;
+    top: 50vh;
+    left: 35px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 16px solid $purple;
+
+    animation: moveTriangle 40s linear infinite;
+  }
+
+  .orange-circle {
+    position: absolute;
+    left: 50%;
+    top: 70vh;
+    width: 38px;
+    height: 38px;
+    border-radius: 38px;
+    transform: translateX(-50%);
+    background: $orange;
+    animation: scaleCircle 7s linear infinite;
+  }
+
+  & > div.paused {
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused; 
+    animation-play-state: paused;
+  } 
+}

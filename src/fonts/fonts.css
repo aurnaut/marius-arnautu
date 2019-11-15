@@ -2,8 +2,8 @@
     font-family: 'Helvetica Neue LT Std';
     font-weight: normal;
     font-style: normal;
-    src: url('HelveticaNeueLTStd-Roman.woff2') format('woff2'),
-        url('HelveticaNeueLTStd-Roman.woff') format('woff');
+    src: url('./HelveticaNeueLTStd-Roman.woff2') format('woff2'),
+        url('./HelveticaNeueLTStd-Roman.woff') format('woff');
     font-display: swap;
 }
 

@@ -2,6 +2,7 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
@@ -238,7 +239,9 @@ h1 {
 
 h1.tagline {
   margin-top: 50vh;
+  margin-bottom: 25vh;
   transform: translateY(-25vh);
+  font-size: 30px;
 }
 
 h2 {

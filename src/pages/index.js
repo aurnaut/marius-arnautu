@@ -4,13 +4,15 @@ import { Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Img from 'gatsby-image';
+import GraphicsAnimation from "../components/graphics-animation";
 
 const IndexPage = ({ data}) => {
   const posts = data.allMarkdownRemark.edges;
   return (
   <Layout>
     <SEO title="Home" />
-    <h1 className="tagline">I design<br/> and develop<br/> web applications</h1>
+    <h1 className="tagline">I design<br/> and develop<br/> web applications.</h1>
+    <GraphicsAnimation />
     <div className="post-list">
     {posts.map(post => (
           <div key={post.node.id} className="post-list__item">
