@@ -2,7 +2,7 @@
 type: article
 path: /blog/hello-world
 title: Hello World
-date: 2018-12-29
+date: 2019-11-19
 thumbnail: '../../images/red.png'
 ---
 

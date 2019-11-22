@@ -244,6 +244,12 @@ h1.tagline {
   font-size: 30px;
 }
 
+h1.tagline span {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
 h2 {
   margin-left: 0;
   margin-right: 0;
@@ -607,6 +613,33 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
+
+.main-wrapper {
+  padding: 0 20px;
+}
+
+footer {
+  font-size: 14px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+footer a {
+  color: #000000;
+}
+
+.footer-nav {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px;
+  list-style: none;
+}
+
+.footer-nav li { 
+  display: inline-block;
+  margin: 0 5px;
+}
+
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;

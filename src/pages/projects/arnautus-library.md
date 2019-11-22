@@ -6,4 +6,4 @@ date: 2019-11-01
 thumbnail: '../../images/purple.png'
 ---
 
-Arnautu's library content!
+A bookstore product showcasing an entire library with an easy to use sort and filter function

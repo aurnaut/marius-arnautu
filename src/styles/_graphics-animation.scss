@@ -12,7 +12,7 @@
     width: 37px;
     height: 37px;
     background: $green;
-    animation: jumpingSquare 5s ease infinite;
+    animation: jumpingSquare 10s ease infinite;
   }
 
   .red-line {
@@ -60,11 +60,4 @@
     background: $orange;
     animation: scaleCircle 7s linear infinite;
   }
-
-  & > div.paused {
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused; 
-    animation-play-state: paused;
-  } 
 }
