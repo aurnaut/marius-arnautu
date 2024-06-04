@@ -18,7 +18,7 @@ const IndexPage = ({ data}) => {
   <Layout>
     <SEO title="Home" />
     <h1 className="tagline">
-      <span> Hi, I'm Marius Arnautu</span>
+      <span> Hi, I'm Marius</span>
       I design and develop<br/> 
       web applications.
     </h1>
