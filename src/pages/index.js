@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import Img from 'gatsby-image';
+import {GatsbyImage, getImage} from 'gatsby-plugin-image';
 import GraphicsAnimation from "../components/graphics-animation";
 
 import TimeAgo from 'javascript-time-ago'
@@ -25,32 +25,39 @@ const IndexPage = ({ data}) => {
     </h1>
     <GraphicsAnimation />
     <div className="post-list">
-    {posts.map(post => (
-          <div key={post.node.id} className="post-list__item">
-            <div className="post-list__content">
-            <a href={ post.node.frontmatter.type === 'article' ? '/blog' : '/projects'} className={ `post-list__type ${post.node.frontmatter.type}` }>{post.node.frontmatter.type}</a>
-              <h2 className="post-list__title">
-                <Link to={post.node.fields.slug}>
-                  {post.node.frontmatter.title}
-                </Link>
-              </h2>
-             
-              <div className="post-list__excerpt">
-                <p>{post.node.excerpt}</p>
+      {
+        posts.map(post => { 
+          return (
+            <div key={post.node.id} className="post-list__item">
+              <div className="post-list__content">
+              <a href={ post.node.frontmatter.type === 'article' ? '/blog' : '/projects'} className={ `post-list__type ${post.node.frontmatter.type}` }>{post.node.frontmatter.type}</a>
+                <h2 className="post-list__title">
+                  <Link to={post.node.fields.slug}>
+                    {post.node.frontmatter.title}
+                  </Link>
+                </h2>
+              
+                <div className="post-list__excerpt">
+                  <p>{post.node.excerpt}</p>
+                </div>
+                <p className="post-list__date">Added {timeAgo.format(new Date(post.node.frontmatter.date))}</p>
               </div>
-              <p className="post-list__date">Added {timeAgo.format(new Date(post.node.frontmatter.date))}</p>
+              <div className="post-list__thumbnail">
+                <Link to={post.node.fields.slug}>
+                  <GatsbyImage
+                    alt={`${post.node.frontmatter.title} thumbnail`}
+                    image={getImage(post.node.frontmatter.thumbnail)}
+                    width={100}
+                    height= {100}
+                  />
+                </Link>
+              </div>
+              
             </div>
-            <div className="post-list__thumbnail">
-              <Link to={post.node.fields.slug}>
-                <Img
-                  fixed={post.node.frontmatter.thumbnail.childImageSharp.fixed}
-                />
-              </Link>
-            </div>
-            
-          </div>
-        ))}
-      </div>
+          )
+        })
+      }
+    </div>
   </Layout>
   );
 };
@@ -73,10 +80,13 @@ export const pageQuery = graphql`
             title
             thumbnail {
               childImageSharp {
-                fixed(width: 63, height: 63) {
-                  ...GatsbyImageSharpFixed
-                }
+                gatsbyImageData(
+                  width: 150
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
+              
             }
           }
         }

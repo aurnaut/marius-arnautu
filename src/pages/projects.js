@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from "../components/layout";
-import Img from 'gatsby-image';
+import {GatsbyImage, getImage} from 'gatsby-plugin-image';
 
 
 import TimeAgo from 'javascript-time-ago'
@@ -32,8 +32,11 @@ const ProjectsPage = ({ data }) => {
             </div>
             <div className="post-list__thumbnail">
               <Link to={post.node.fields.slug}>
-                <Img
-                  fixed={post.node.frontmatter.thumbnail.childImageSharp.fixed}
+                <GatsbyImage
+                  alt={`${post.node.frontmatter.title} thumbnail`}
+                  image={getImage(post.node.frontmatter.thumbnail)}
+                  width={100}
+                  height= {100}
                 />
               </Link>
             </div>
@@ -64,9 +67,11 @@ export const pageQuery = graphql`
             title
             thumbnail {
               childImageSharp {
-                fixed(width: 63, height: 63) {
-                  ...GatsbyImageSharpFixed
-                }
+                gatsbyImageData(
+                  width: 150
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }
