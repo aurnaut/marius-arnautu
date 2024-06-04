@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import Img from 'gatsby-image';
 import GraphicsAnimation from "../components/graphics-animation";
 
@@ -17,7 +17,7 @@ const IndexPage = ({ data}) => {
   const posts = data.allMarkdownRemark.edges;
   return (
   <Layout>
-    <SEO title="Home" />
+    <Seo title="Home" />
     <h1 className="tagline">
       <span> Hi, I'm Marius</span>
       I design and develop<br/> 
