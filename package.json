@@ -17,14 +17,18 @@
     "gatsby-transformer-remark": "^6.13.1",
     "gatsby-transformer-sharp": "^5.13.1",
     "javascript-time-ago": "^2.5.10",
-    "node-sass": "^9.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "sass": "^1.77.6"
   },
   "devDependencies": {
     "prettier": "^3.3.0"
+  },
+  "overrides": {
+    "msgpackr": "^1.11.2",
+    "ordered-binary": "^1.6.2"
   },
   "keywords": [
     "gatsby"
