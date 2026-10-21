@@ -1,20 +1,47 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/layout';
+import Seo from '../components/seo';
+import { TypeLink } from '../components/post-list';
 
 const PostTemplate = ({ data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
+  const isCaseStudy = frontmatter.type !== 'article';
+  const meta = [
+    ['Role', frontmatter.role],
+    ['When', frontmatter.period],
+    ['Team', frontmatter.team],
+    ['Tools', frontmatter.tools],
+  ].filter(([, value]) => value);
+
   return (
     <Layout>
-      <section>
-        <div>
+      <Seo title={frontmatter.title} description={frontmatter.summary} />
+      <article className="case-study">
+        <Link className="case-study__back" to={isCaseStudy ? '/projects' : '/blog'}>
+          ← All {isCaseStudy ? 'work' : 'articles'}
+        </Link>
+        <header className="case-study__header">
+          <TypeLink type={frontmatter.type} />
           <h1>{frontmatter.title}</h1>
-          <span>{frontmatter.date}</span>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </section>
+          {frontmatter.summary && <p className="case-study__summary">{frontmatter.summary}</p>}
+          {meta.length > 0 ? (
+            <dl className="case-study__meta">
+              {meta.map(([label, value]) => (
+                <div key={label}>
+                  <dt>{label}</dt>
+                  <dd>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          ) : (
+            <span>{frontmatter.date}</span>
+          )}
+        </header>
+        <div className="case-study__body" dangerouslySetInnerHTML={{ __html: html }} />
+      </article>
     </Layout>
   );
 };
@@ -27,7 +54,13 @@ export const pageQuery = graphql`
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
+        type
         title
+        summary
+        role
+        period
+        team
+        tools
       }
     }
   }

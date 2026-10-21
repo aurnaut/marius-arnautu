@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { Link } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
@@ -14,8 +15,9 @@ const Layout = ({ children }) => {
         <footer>
         © {new Date().getFullYear()}
           <ul className="footer-nav">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><Link to="/projects">Work</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><a href="mailto:marius.arnautu@gmail.com">Contact</a></li>
           </ul>
            Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>

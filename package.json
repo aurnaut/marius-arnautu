@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "Marius Arnautu's Portfolio",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Design portfolio of Marius Arnautu",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Marius Arnautu <marius.arnautu@gmail.com>",
   "dependencies": {
     "gatsby": "^5.13.6",
     "gatsby-plugin-image": "^3.13.1",
@@ -41,12 +41,5 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }

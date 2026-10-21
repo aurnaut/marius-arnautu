@@ -61,6 +61,7 @@
 }
 
 .post-list__thumbnail {
+  flex-shrink: 0;
   margin-left: auto;
   padding: 15px;
 
@@ -104,5 +105,26 @@
   p {
     font-size: 16px;
     margin-bottom: 0;
+  }
+}
+
+.projects-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+
+  a {
+    padding: 6px 14px;
+    border: 1px solid $black;
+    border-radius: 20px;
+    color: $black;
+    font-size: 14px;
+    text-decoration: none;
+
+    &.is-active {
+      background: $black;
+      color: $white;
+    }
   }
 }
