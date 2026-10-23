@@ -4,6 +4,9 @@
   left: 0;
   right: 0;
   z-index: -1;
+  // The red line starts out past the right edge. Cut it off there, or phones let the page be swiped sideways to it.
+  // clip, unlike hidden, leaves the shapes free to hang below the wrapper, which has no height of its own.
+  overflow-x: clip;
 
   .green-square {
     position: absolute;
