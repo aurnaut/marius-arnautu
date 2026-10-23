@@ -1,0 +1,260 @@
+.section-title {
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 15px;
+}
+
+// Centred reading column, applied to every page by the layout
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+.case-study {
+  padding-bottom: 40px;
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+  }
+}
+
+.case-study__header {
+  margin-bottom: 40px;
+
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    margin: 10px 0;
+  }
+}
+
+// The post's cover, blown up at the top of its case study, playing for as long as it's there.
+// The covers are drawn 150 wide, so it's sized here.
+.cover-hero {
+  margin: 0 0 30px;
+
+  svg {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    max-height: 60vh;
+    margin: 0 auto;
+  }
+}
+
+.case-study__summary {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+// The small bold capitals the meta block labels its terms with, and decisions borrow
+@mixin meta-label {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.case-study__meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px 30px;
+  margin: 0 0 1.45rem;
+  padding: 20px 0;
+  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+
+  @media (min-width: $mq-smartphone) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  dt {
+    @include meta-label;
+    margin-bottom: 4px;
+  }
+
+  dd {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0;
+  }
+}
+
+.case-study__body {
+  h2 {
+    font-size: 24px;
+    margin-top: 50px;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+
+  p,
+  li {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--accent);
+  }
+
+  figure {
+    margin: 30px 0;
+  }
+
+  figcaption {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+// Numbered steps for flows and wizards
+.flow {
+  list-style: none;
+  margin: 30px 0;
+  padding: 0;
+  counter-reset: flow;
+
+  li {
+    position: relative;
+    counter-increment: flow;
+    padding-left: 42px;
+    margin-bottom: 0;
+
+    & + li {
+      margin-top: 24px;
+    }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 26px;
+      background: $purple;
+      color: $white;
+      font-size: 13px;
+      line-height: 26px;
+      text-align: center;
+      content: counter(flow);
+    }
+
+    strong {
+      display: block;
+    }
+  }
+}
+
+// A decision pulled out of the body copy, ruled off with dashes, its lead-in on a line of its own after a label,
+// both styled like the meta block's labels. A dashed border can't set its dashes' length, so the rules are drawn.
+$callout-dash: 6px;
+$callout-gap: 5px;
+
+.callout {
+  $rule: repeating-linear-gradient(to right, var(--divider) 0 $callout-dash, transparent $callout-dash $callout-dash + $callout-gap);
+
+  margin: 30px 0;
+  padding: 20px 0;
+  background: $rule top / 100% 1px no-repeat, $rule bottom / 100% 1px no-repeat;
+
+  // Non-breaking spaces, as plain ones would collapse into one
+  p:first-child::before {
+    content: 'Decision\00a0\00a0\2192\00a0\00a0';
+  }
+
+  p:first-child::before,
+  p > strong:first-child {
+    @include meta-label;
+  }
+
+  // Breaks the line after the lead-in, so the reasoning starts 10px below
+  p > strong:first-child::after {
+    content: '';
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Row of headline numbers
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 30px 0;
+
+  @media (min-width: $mq-tablet) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  strong {
+    display: block;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  span {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+}
+
+// Placeholder for a screenshot that hasn't been added yet
+.shots {
+  display: grid;
+  gap: 20px;
+  margin: 30px 0;
+
+  @media (min-width: $mq-smartphone) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.shot-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  margin: 30px 0;
+  padding: 20px;
+  border: 1px dashed var(--fg);
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.experience {
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+}
+
+.experience__period {
+  font-size: 14px;
+}

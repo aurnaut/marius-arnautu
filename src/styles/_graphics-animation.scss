@@ -33,7 +33,7 @@
     height: 119px;
     transform: translateX(-50%) rotate(45deg);
     background: $blue;
-    animation: rotateRectangle 60s linear infinite;
+    animation: rotateRectangle 120s linear infinite;
   }
 
   .purple-triangle {
@@ -60,4 +60,15 @@
     background: $orange;
     animation: scaleCircle 7s linear infinite;
   }
+}
+
+// Text the shapes can drift behind. In dark mode it blends with them, so it stays readable where it crosses one.
+// Only the text: the type labels' coloured shapes would be inverted too.
+h1.tagline,
+.post-list__title a,
+.post-list__separator,
+.post-list__date,
+.post-list__excerpt p {
+  color: var(--overlap-fg);
+  mix-blend-mode: var(--overlap-blend);
 }

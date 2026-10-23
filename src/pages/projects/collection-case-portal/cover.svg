@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- An outlined invoice whose lines of different lengths run out through its edge and into
+       a server box, where they become cut-outs -->
+  <defs>
+    <!-- Cuts the lines out of the box -->
+    <mask id="cut-lines" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="600">
+      <rect width="600" height="600" fill="#fff"/>
+      <path d="M110 268H440M110 338H492M110 408H410" stroke="#000" stroke-width="8"/>
+    </mask>
+    <!-- Hides the lines where they cross the box -->
+    <mask id="outside-box" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="600">
+      <rect width="600" height="600" fill="#fff"/>
+      <rect x="346" y="210" width="188" height="256" fill="#000"/>
+    </mask>
+  </defs>
+  <rect x="74" y="114" width="212" height="372" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <!-- The server box, with two status lights cut out of its top-right corner -->
+  <path d="M346 210H534V466H346Z M516 238a10 10 0 1 0 -20 0a10 10 0 1 0 20 0Z M486 238a10 10 0 1 0 -20 0a10 10 0 1 0 20 0Z" fill="#F76A6A" fill-rule="evenodd" mask="url(#cut-lines)"/>
+  <path d="M110 190H190M110 268H440M110 338H492M110 408H410" stroke="#EFB940" stroke-width="8" mask="url(#outside-box)"/>
+</svg>

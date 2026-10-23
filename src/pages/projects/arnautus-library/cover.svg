@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- A book: the front with two columns of text and a spine line, and the pages behind it
+       stepped out above and to the right, angled into the corners -->
+  <path d="M62 196H494V468H62ZM278 196V468" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <!-- The pages behind, drawn as one line from the front's top-left corner round to its bottom-right,
+       plus the diagonal at the top-right corner -->
+  <path d="M62 196L90 168H522V440L494 468M494 196L522 168" fill="none" stroke="#3A16D3" stroke-width="8" stroke-linejoin="miter" stroke-linecap="square"/>
+  <!-- Each page has its own pattern of line lengths, so the two columns don't mirror each other -->
+  <path d="M94 252H228M94 302H204M94 352H234M94 402H178M310 252H400M310 302H438M310 352H382M310 402H426" stroke="#EFB940" stroke-width="8"/>
+</svg>

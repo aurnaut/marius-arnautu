@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- A visible 2 x 2 grid with one shape in each cell, like the pieces of an identity -->
+  <path d="M100 100H500V500H100ZM300 100V500M100 300H500" fill="none" stroke="#46F1FF" stroke-width="8"/>
+  <circle cx="200" cy="200" r="50" fill="#EFB940"/>
+  <!-- The square is drawn smaller than the others: at the same size it looks heavier -->
+  <rect x="355" y="155" width="90" height="90" fill="#3A16D3"/>
+  <path d="M200 340L254 440H146Z" fill="#F76A6A"/>
+  <path d="M400 341L459 400L400 459L341 400Z" fill="#24A529"/>
+</svg>
