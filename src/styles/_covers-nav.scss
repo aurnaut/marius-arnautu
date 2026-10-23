@@ -16,6 +16,12 @@ $covers-nav-beside: $container-width + 2 * ($covers-nav-size + 40px);
     padding: 0;
     list-style: none;
     overflow-x: auto;
+    // It's plain from the covers running off the edge that the row scrolls, so the scrollbar is hidden
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   li {

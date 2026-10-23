@@ -6,8 +6,8 @@ $mq-desktop: 1280px;
 // Layout
 $container-width: 760px;
 $logo-width: 28px;
-// The covers menu's covers are as wide as the logo
-$covers-nav-size: $logo-width;
+// The covers menu's covers, a little bigger than the logo, to be easier to make out and to tap
+$covers-nav-size: 36px;
 
 // Colors
 $white: #FFFFFF;
