@@ -16,7 +16,13 @@ module.exports = {
     },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        // Gatsby's default of 50 leaves visible compression on artwork
+        defaults: { quality: 90 },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -44,6 +50,7 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 900,
+              quality: 90,
             },
           },
         ],

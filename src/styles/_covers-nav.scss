@@ -1,0 +1,100 @@
+// The covers menu. Where there's room beside the reading column, it's a column under the logo, in line with it,
+// that stays in view as the page scrolls, each cover's title showing beside it on hover or focus.
+// Where there isn't, it's a row under the header that scrolls sideways, the titles left to screen readers.
+// The covers sit over the reading column's area rather than beside it, so the column stays centred on the page.
+$covers-nav-gap: 12px;
+// Wide enough for the gutter either side of the column to fit a cover with the page's 20px margin both sides of it
+$covers-nav-beside: $container-width + 2 * ($covers-nav-size + 40px);
+
+.covers-nav {
+  padding: 0 20px 20px;
+
+  ul {
+    display: flex;
+    gap: $covers-nav-gap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+  }
+
+  li {
+    flex: none;
+    margin: 0;
+  }
+
+  a {
+    position: relative;
+    display: block;
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+}
+
+// A cover's shapes as one solid silhouette in the foreground colour
+.covers-nav__cover {
+  display: block;
+  width: $covers-nav-size;
+  height: $covers-nav-size;
+  background: var(--fg);
+  mask: var(--cover) center / contain no-repeat;
+}
+
+// Kept for screen readers, out of sight
+.covers-nav__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (min-width: $covers-nav-beside) {
+  .site-body {
+    display: grid;
+  }
+
+  .covers-nav,
+  .main-wrapper {
+    grid-area: 1 / 1;
+  }
+
+  .covers-nav {
+    position: sticky;
+    top: 20px;
+    z-index: 1;
+    align-self: start;
+    justify-self: start;
+    padding: 0 0 0 20px;
+
+    ul {
+      flex-direction: column;
+      overflow: visible;
+    }
+  }
+
+  .covers-nav__label {
+    @include meta-label;
+    top: 50%;
+    left: 100%;
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+    padding: 2px 6px;
+    background: var(--bg);
+    translate: 0 -50%;
+    clip-path: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .covers-nav a:hover .covers-nav__label,
+  .covers-nav a:focus-visible .covers-nav__label {
+    opacity: 1;
+  }
+}

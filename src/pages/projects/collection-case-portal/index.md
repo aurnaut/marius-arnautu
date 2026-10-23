@@ -1,26 +1,27 @@
 ---
 type: development
-title: A case workflow for data-collection agents
+title: "Metry: a case workflow for data-collection agents"
+navTitle: "Invoice Case Workflow"
 date: 2025-01-13
-thumbnail: './cover.png'
-summary: Designing and building the invoice case workflow in an internal operations tool, where agents turn utility invoices into validated meter readings, with a work queue, assignment, rejection and confident error handling.
+thumbnail: './cover.svg'
+summary: Metry's invoice cases, turning utility bills into validated readings
 role: Lead front-end developer and designer. I was the top contributor and built the invoice workflow end to end.
-period: Oct 2024 – Jan 2025
+period: 2024 – 2025
 tools: React, TypeScript, react-hook-form, Jest
 ---
 
 ## Context
 
-Not every utility supplier sends data automatically. When an automated feed fails, or a meter only exists on paper, an **operations agent** has to step in. They take the utility invoice, find the meter it belongs to, and key in the consumption by hand. Those readings flow straight into clients' carbon and energy reports, so accuracy matters.
+When a utility's automated feed fails, an operations agent keys in consumption from the invoice by hand, and those readings go straight into clients' carbon reports. At [Metry](https://metry.io) I designed and built the **invoice cases** in the Collection Case Portal: the queue, the case detail and the rules connecting them.
 
-Agents worked from the Collection Case Portal, an internal case-management tool. My work was to design and build its **invoice cases**: the queue, the case detail and the rules connecting them. I also added a way for failed automated imports to become invoice cases automatically in the admin tool.
+<!-- TODO (Marius): say how you worked with Metry (employee, contractor or agency) and who you worked with (product, operations, other developers). -->
 
 ## The problem
 
-- **Volume.** Agents work through cases in bulk, so every extra click is multiplied.
-- **Messy inputs.** Invoices list meters by their EAN (European Article Number) codes. These are long, easy to mistype, and sometimes refer to meters our system doesn't know about yet.
-- **Not every case can be completed.** Some invoices are unreadable or belong to the wrong client. Agents need a clean way to say "no" without losing the record.
-- **Shared queues.** Several agents work the same queue, so it has to be obvious who owns what.
+- **Volume:** every extra click is multiplied.
+- **Messy inputs:** long EAN meter codes, easy to mistype, sometimes unknown.
+- **Some cases can't be completed**, but the record must stay.
+- **Shared queues:** ownership must be obvious.
 
 ## What I built
 
@@ -28,11 +29,11 @@ Agents worked from the Collection Case Portal, an internal case-management tool.
 
 <div class="shot-placeholder">Screenshot: invoice case list with status and agent filters</div>
 
-The case list can be sorted and filtered, including by several statuses at once and by **unassigned cases**, which is how a team lead spots work that's falling through the cracks. Filters can be reset in one action. Going back from a case returns you to the list **exactly as you left it**, with the same filters and the same page.
+Filters for several statuses at once and for **unassigned cases**, so team leads spot work falling through the cracks.
 
 <div class="callout">
 
-**Decision: keep the queue's state when the agent goes back.** An agent opens a case, completes it and goes back for the next one dozens of times a day. If the list resets each time, they rebuild their filters each time. Keeping the state was a small piece of engineering that saved a lot of tiny frustrations.
+**Keep the queue's state when the agent goes back.** Agents return to the list dozens of times a day; keeping filters and page saves rebuilding it every time.
 
 </div>
 
@@ -40,20 +41,14 @@ The case list can be sorted and filtered, including by several statuses at once 
 
 <div class="shot-placeholder">Screenshot: invoice case detail with EAN meters and a validation error</div>
 
-- **Meter matching with clear errors.** An unknown EAN gets a specific validation error rather than a generic failure. If the meter really is new, the agent can create it from inside the case instead of escalating.
-- **Several meters per invoice.** Many invoices cover several meters, so agents can add extra EANs to one case.
-- **Drafts.** Consumption can be saved as a draft and finished later. That way an interruption doesn't mean starting again.
-- **Reject and un-reject.** Rejecting a case disables its fields, so a rejected case can't be edited by accident, but it stays reversible in case the rejection was a mistake.
-- **Confirmation for destructive actions.** Deleting a case asks for confirmation first.
+- Specific errors for unknown EANs, and creating a new meter from inside the case instead of escalating.
+- Several meters per invoice, and drafts.
+- Reversible rejection that locks the case's fields.
 
 ### From failure to case automatically
 
-In the internal admin tool, a failed automated file import can now be turned into an invoice case directly. Problems arrive in the agents' queue with their context attached, instead of being reported by email.
-
-I also added unit tests around the API calls, because a silent failure in this tool means a client's report quietly misses a month of data.
+In the admin tool, a failed automated import can become an invoice case directly, with its context, instead of an email. I added unit tests around the API calls, because a silent failure means a client's report quietly misses a month.
 
 <!-- TODO (Marius): outcome, e.g. cases processed per week, time per case, reduction in escalations to engineering, feedback from the operations team. -->
 
-## What I learned
-
-The best UX in an operations tool is usually invisible: state that survives navigation, errors that say what to do next, and actions that are reversible. None of it would stand out in a portfolio screenshot, but it adds up over every case an agent handles in a day.
+The best UX in an operations tool is usually invisible: state that survives navigation, errors that say what to do next, and actions that can be undone.

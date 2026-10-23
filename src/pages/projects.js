@@ -3,14 +3,12 @@ import { graphql } from 'gatsby';
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import PostList from "../components/post-list";
-import ProjectsNav from "../components/projects-nav";
 
 const ProjectsPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
   return (
     <Layout>
       <Seo title="Work" />
-      <ProjectsNav />
       <PostList posts={posts} />
     </Layout>
   );

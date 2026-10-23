@@ -1,39 +1,58 @@
+@use 'sass:math';
+
 @keyframes rotateRectangle {
   0% {
     transform: translateX(-50%) rotate(45deg);
   }
   100% {
-    transform: translateX(-50%) rotate(225deg);
+    transform: translateX(-50%) rotate(405deg);
   }
 }
 
+// Movement and turning are keyframed separately: the triangle moves at a
+// steady speed, and each corner turn takes the 0.125% either side of the corner.
+// The loop restarts halfway through the turn at the start corner.
 @keyframes moveTriangle {
   0% {
-    transform: translateY(0) rotate(0);
+    translate: 0 0;
+    rotate: -45deg;
   }
-  24.99% {
-    transform: translateY(-130px) rotate(0);
+  0.125% {
+    rotate: 0deg;
+  }
+  24.875% {
+    rotate: 0deg;
   }
   25% {
-    transform: translateY(-130px) rotate(90deg);
+    translate: 0 -130px;
   }
-  49.99% {
-    transform: translateY(-130px) translateX(130px) rotate(90deg)
+  25.125% {
+    rotate: 90deg;
+  }
+  49.875% {
+    rotate: 90deg;
   }
   50% {
-    transform: translateY(-130px) translateX(130px) rotate(180deg);
+    translate: 130px -130px;
   }
-  74.99% {
-    transform: translateY(0) translateX(130px) rotate(180deg);
+  50.125% {
+    rotate: 180deg;
+  }
+  74.875% {
+    rotate: 180deg;
   }
   75% {
-    transform: translateY(0) translateX(130px) rotate(270deg);
+    translate: 130px 0;
   }
-  99.99% {
-    transform: translateY(0) translateX(0) rotate(270deg);
+  75.125% {
+    rotate: 270deg;
+  }
+  99.875% {
+    rotate: 270deg;
   }
   100% {
-    transform: translateY(0) translateX(0) rotate(360deg);
+    translate: 0 0;
+    rotate: 315deg;
   }
 }
 
@@ -71,4 +90,310 @@
     transform: translateY(0);
     border-radius: 0;
   }
+}
+
+// Carries a shape round a circle without turning it: rotate it about the circle's centre,
+// then turn it back by the same angle about its own centre, which sits --dx/--dy from there
+@keyframes orbitUpright {
+  from {
+    transform: rotate(0deg) translate(var(--dx), var(--dy)) rotate(0deg) translate(calc(var(--dx) * -1), calc(var(--dy) * -1));
+  }
+  to {
+    transform: rotate(360deg) translate(var(--dx), var(--dy)) rotate(-360deg) translate(calc(var(--dx) * -1), calc(var(--dy) * -1));
+  }
+}
+
+// The pencil cover's four animations share their stops and run linear, so the pieces stay joined
+// and the line stays between the point and the eraser. Angles are clockwise from 12 o'clock.
+// Four rounds of writing then erasing, each moving the pencil a quarter turn, make one seamless loop.
+// Writing: the eraser end holds while the point backs off 90deg, lifting for the last 20deg, as the eraser
+// always stops 20deg short of the point. Erasing: the point holds while the eraser end sweeps 90deg over the line.
+@keyframes pencilEraser {
+  0%, 12.5% { rotate: 0deg; }
+  25%, 37.5% { rotate: -90deg; }
+  50%, 62.5% { rotate: -180deg; }
+  75%, 87.5% { rotate: -270deg; }
+  100% { rotate: -360deg; }
+}
+
+@keyframes pencilPoint {
+  0% { rotate: 0deg; }
+  12.5%, 25% { rotate: -90deg; }
+  37.5%, 50% { rotate: -180deg; }
+  62.5%, 75% { rotate: -270deg; }
+  87.5%, 100% { rotate: -360deg; }
+}
+
+// The body runs from 47deg to 343deg, 1deg into the solid ends after the eraser's joint and before the point,
+// so it starts at 47deg minus the eraser's turn, and its length is 296deg, less the point's turn, plus the eraser's turn
+@keyframes pencilBody {
+  0% { rotate: -43deg; stroke-dasharray: 296 360; }
+  12.5% { rotate: -43deg; stroke-dasharray: 206 360; }
+  25% { rotate: -133deg; stroke-dasharray: 296 360; }
+  37.5% { rotate: -133deg; stroke-dasharray: 206 360; }
+  50% { rotate: -223deg; stroke-dasharray: 296 360; }
+  62.5% { rotate: -223deg; stroke-dasharray: 206 360; }
+  75% { rotate: -313deg; stroke-dasharray: 296 360; }
+  87.5% { rotate: -313deg; stroke-dasharray: 206 360; }
+  100% { rotate: -403deg; stroke-dasharray: 296 360; }
+}
+
+// The line runs from the point back to where the point started writing, until the point lifts,
+// and once erasing starts, up to the eraser's leading edge.
+// Its start angle less 90deg is its rotation, as a circle's dash starts at 3 o'clock.
+// Each round's line is empty by 0.01% before the next starts, so it can jump to its new start unseen.
+@keyframes pencilLine {
+  0% { rotate: 274deg; stroke-dasharray: 0 360; }
+  9.722%, 15.278% { rotate: 204deg; stroke-dasharray: 70 360; }
+  24.99% { rotate: 204deg; stroke-dasharray: 0 360; }
+  25% { rotate: 184deg; stroke-dasharray: 0 360; }
+  34.722%, 40.278% { rotate: 114deg; stroke-dasharray: 70 360; }
+  49.99% { rotate: 114deg; stroke-dasharray: 0 360; }
+  50% { rotate: 94deg; stroke-dasharray: 0 360; }
+  59.722%, 65.278% { rotate: 24deg; stroke-dasharray: 70 360; }
+  74.99% { rotate: 24deg; stroke-dasharray: 0 360; }
+  75% { rotate: 4deg; stroke-dasharray: 0 360; }
+  84.722%, 90.278% { rotate: -66deg; stroke-dasharray: 70 360; }
+  99.99% { rotate: -66deg; stroke-dasharray: 0 360; }
+  100% { rotate: -86deg; stroke-dasharray: 0 360; }
+}
+
+// Rises and falls like a jump, easing out on the way up and in on the way down,
+// turning a third of a circle in the air, which lands it upright again
+@keyframes fundJump {
+  0% {
+    translate: 0 0;
+    rotate: 0deg;
+    animation-timing-function: ease-out;
+  }
+  50% {
+    translate: 0 -70px;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    translate: 0 0;
+    rotate: 120deg;
+  }
+}
+
+// Scrolls a line's dash one line along, feeding it in, then rests while the server takes it
+@keyframes feedLine {
+  0% {
+    stroke-dashoffset: var(--start, 0px);
+    animation-timing-function: ease-in-out;
+  }
+  60%, 100% {
+    stroke-dashoffset: calc(var(--start, 0px) - 500px);
+  }
+}
+
+// Off while the lines feed in, then fades to green once they've landed, and back off before the next lines arrive
+@keyframes statusLight {
+  0%, 70%, 100% { opacity: 0; }
+  78%, 92% { opacity: 1; }
+}
+
+// Moves the dots back one gap along their lines, which looks the same as where they started
+@keyframes marchDots {
+  from { stroke-dashoffset: 0px; }
+  to { stroke-dashoffset: 16px; }
+}
+
+// The SIERA cover's pathways run from 80 to 530, as far as the dots do. At rest they're the drawing in
+// siera-esg-analytics-cover.js, curving from separate starts into the ball's centre at (530, 420),
+// level with the lowest pathway's start, so that one runs straight and the rest converge onto it.
+$siera-starts: 110.0, 138.2, 166.4, 194.5, 222.7, 250.9, 279.1, 307.3, 335.5, 363.6, 391.8, 420.0;
+$siera-first-controls: 125.5, 152.3, 179.0, 205.8, 232.6, 259.4, 286.1, 312.9, 339.7, 366.5, 393.2, 420.0;
+$siera-second-controls: 280.5, 293.2, 305.9, 318.5, 331.2, 343.9, 356.6, 369.3, 382.0, 394.6, 407.3, 420.0;
+
+// Once moving, each pathway is a sine wave that dips smoothly to the lowest one, where they all meet, and rises back to its start's
+// height between dips. Half a wavelength is the cover's width, so the waves start out dipping where the drawing meets,
+// at the right end, and falling at the drawing's slope. They run a wavelength further right than the cover,
+// out of sight behind the clip, so they can slide a wavelength left and loop.
+$siera-wavelength: 900;
+$siera-first-dip: 530;
+
+// Where the ball rests
+$siera-ball-x: 530;
+$siera-ball-y: 420;
+
+// Both forms are drawn as the same run of curves, so the browser can morph one into the other:
+// this many across the cover, and the same size of piece for the wavelength out of sight
+$siera-pieces: 8;
+$siera-hidden-pieces: math.div($siera-wavelength * $siera-pieces, 450);
+
+// How long the waves take to slide a wavelength
+$siera-flow-time: 8s;
+
+// The ball's ride over one wavelength is sampled this many times
+$siera-steps: 24;
+
+@function siera-round($value) {
+  @return math.div(math.round($value * 10), 10);
+}
+
+// A curve from one point to the next, given how fast each is heading, scaled to the length of the piece
+@function siera-piece($x1, $y1, $dx1, $dy1, $x2, $y2, $dx2, $dy2) {
+  @return 'C#{siera-round($x1 + math.div($dx1, 3))} #{siera-round($y1 + math.div($dy1, 3))}'
+    + ' #{siera-round($x2 - math.div($dx2, 3))} #{siera-round($y2 - math.div($dy2, 3))}'
+    + ' #{siera-round($x2)} #{siera-round($y2)}';
+}
+
+// The ith wave's height at x when it dips at $dip-x, and its slope there
+@function siera-wave($i, $x, $dip-x: $siera-first-dip) {
+  $k: math.div(math.$pi, $siera-wavelength);
+  $angle: $k * ($x - $dip-x);
+  $depth: $siera-ball-y - nth($siera-starts, $i);
+  @return ($siera-ball-y - $depth * math.pow(math.sin($angle), 2), -$depth * $k * math.sin(2 * $angle));
+}
+
+@function siera-waves() {
+  $d: '';
+  $width: math.div(450, $siera-pieces);
+  @for $i from 1 through length($siera-starts) {
+    $d: $d + 'M80 #{siera-round(nth(siera-wave($i, 80), 1))}';
+    @for $piece from 1 through $siera-pieces + $siera-hidden-pieces {
+      $x: 80 + ($piece - 1) * $width;
+      $from: siera-wave($i, $x);
+      $to: siera-wave($i, $x + $width);
+      $d: $d + siera-piece(
+        $x, nth($from, 1), $width, nth($from, 2) * $width,
+        $x + $width, nth($to, 1), $width, nth($to, 2) * $width
+      );
+    }
+  }
+  @return path(quote($d));
+}
+
+// The ith drawn curve's point $t of the way along, and how fast it's heading there
+@function siera-drop($i, $t) {
+  $xs: (80, 287.7, 403.1, 530);
+  $ys: (nth($siera-starts, $i), nth($siera-first-controls, $i), nth($siera-second-controls, $i), $siera-ball-y);
+  $rest: 1 - $t;
+  $weights: ($rest * $rest * $rest, 3 * $rest * $rest * $t, 3 * $rest * $t * $t, $t * $t * $t);
+  $slopes: (-3 * $rest * $rest, 3 * $rest * $rest - 6 * $rest * $t, 6 * $rest * $t - 3 * $t * $t, 3 * $t * $t);
+  $point: (0, 0, 0, 0);
+  @for $n from 1 through 4 {
+    $point: (
+      nth($point, 1) + nth($xs, $n) * nth($weights, $n),
+      nth($point, 2) + nth($ys, $n) * nth($weights, $n),
+      nth($point, 3) + nth($xs, $n) * nth($slopes, $n),
+      nth($point, 4) + nth($ys, $n) * nth($slopes, $n)
+    );
+  }
+  @return $point;
+}
+
+// The drawn curves, cut into pieces, then carrying on level with where they meet, out of sight
+@function siera-drops() {
+  $d: '';
+  $step: math.div(1, $siera-pieces);
+  $width: math.div(450, $siera-pieces);
+  @for $i from 1 through length($siera-starts) {
+    $d: $d + 'M80 #{nth($siera-starts, $i)}';
+    @for $piece from 1 through $siera-pieces {
+      $from: siera-drop($i, ($piece - 1) * $step);
+      $to: siera-drop($i, $piece * $step);
+      $d: $d + siera-piece(
+        nth($from, 1), nth($from, 2), nth($from, 3) * $step, nth($from, 4) * $step,
+        nth($to, 1), nth($to, 2), nth($to, 3) * $step, nth($to, 4) * $step
+      );
+    }
+    @for $piece from 1 through $siera-hidden-pieces {
+      $x: 530 + ($piece - 1) * $width;
+      $d: $d + siera-piece($x, $siera-ball-y, $width, 0, $x + $width, $siera-ball-y, $width, 0);
+    }
+  }
+  @return path(quote($d));
+}
+
+// The ball's offset from where it rests, on the top wave at x when it dips at $dip-x
+@function siera-ball-on-top($x, $dip-x) {
+  @return siera-round($x - $siera-ball-x) * 1px siera-round(nth(siera-wave(1, $x, $dip-x), 1) - $siera-ball-y) * 1px;
+}
+
+// As the waves start sliding, the drawn curves ease into them, which they nearly are already
+@keyframes sieraUnfold {
+  from { d: siera-drops(); }
+  to { d: siera-waves(); }
+}
+
+// The waves slide left a wavelength, which looks the same as where they started, so dips and humps keep coming in from the right
+@keyframes sieraFlow {
+  to { translate: -$siera-wavelength * 1px 0; }
+}
+
+// The ball stays where it rests, at the right end, riding the top pathway up over each hump and down into each dip
+@keyframes sieraBall {
+  @for $step from 0 through $siera-steps {
+    $t: math.div($step, $siera-steps);
+    #{math.percentage($t)} {
+      translate: siera-ball-on-top($siera-ball-x, $siera-first-dip - $siera-wavelength * $t);
+    }
+  }
+}
+
+// Carries the sneaker cover's finish line 176 down its lanes, along their slant, 22.5deg off upright,
+// from above the upper to below its foot
+@keyframes sneakerFinish {
+  from { translate: 0 0; }
+  to { translate: -67.4px 162.6px; }
+}
+
+// The TEDx cover's spin: each stroke turns a whole turn its own way from where it's drawn,
+// so it carries straight on into the next
+@keyframes tedxSpin {
+  from { rotate: var(--turn); }
+  to { rotate: calc(var(--turn) + var(--spin)); }
+}
+
+// The dashboards cover's pie chart moves through these shares for its three slices, flowing straight on from each
+// into the next, then back to the first. A slice's dash is its share, and its offset the shares before it.
+// From the drawn split, each slice in turn swells to take most of the pie, the others shrinking to slivers
+$dashboards-shares: (50, 30, 20), (85, 5, 10), (10, 80, 10), (5, 10, 85);
+
+@mixin dashboards-slice($shares, $i) {
+  $before: 0;
+  @for $j from 1 to $i {
+    $before: $before + nth($shares, $j);
+  }
+  stroke-dasharray: nth($shares, $i) 100;
+  stroke-dashoffset: -$before;
+}
+
+@for $i from 1 through 3 {
+  @keyframes dashboardsSlice#{$i} {
+    @for $n from 1 through length($dashboards-shares) {
+      $start: math.percentage(math.div($n - 1, length($dashboards-shares)));
+      #{$start} {
+        @include dashboards-slice(nth($dashboards-shares, $n), $i);
+      }
+    }
+    100% {
+      @include dashboards-slice(nth($dashboards-shares, 1), $i);
+    }
+  }
+}
+
+// The design system cover's shapes pass over the top of the ring a fifth of an orbit apart: the circle as it starts,
+// then the square, the triangle, the tall bar and the thin one. The cut-out in the logo morphs into each one's shape
+// in the 0.4s either side of it getting there, and holds it till the next one comes, except for the circle, which
+// brings back the logo's own hole, a circle 57 across from the centre. The thin bar morphs back into the logo's hole
+// as the orbit comes round, so it's already there as it starts.
+// Each shape is drawn the same way, so one can morph into another: four curves between four corners, clockwise from
+// the top left, straight for the square and the bars, quarter arcs for the circle, and with the triangle's top corners
+// both at its point. Each is a fifth bigger than it is on the ring, so it reaches out towards the logo's edges like
+// its own hole does, and centred on the logo, the triangle by its centroid, a third of the way up from its base.
+$design-system-square: 'M258 258C286 258 314 258 342 258C342 286 342 314 342 342C314 342 286 342 258 342C258 314 258 286 258 258Z';
+$design-system-logo: 'M259.7 259.7C282 237.4 318 237.4 340.3 259.7C362.6 282 362.6 318 340.3 340.3C318 362.6 282 362.6 259.7 340.3C237.4 318 237.4 282 259.7 259.7Z';
+$design-system-triangle: 'M300 237C300 237 300 237 300 237C318 268.5 336 300 354 331.5C318 331.5 282 331.5 246 331.5C264 300 282 268.5 300 237Z';
+$design-system-tall-bar: 'M276 246C292 246 308 246 324 246C324 282 324 318 324 354C308 354 292 354 276 354C276 318 276 282 276 246Z';
+$design-system-thin-bar: 'M246 291.6C282 291.6 318 291.6 354 291.6C354 297.2 354 302.8 354 308.4C318 308.4 282 308.4 246 308.4C246 302.8 246 297.2 246 291.6Z';
+
+@keyframes designSystemCut {
+  0%, 16.7%, 100% { d: path($design-system-logo); }
+  23.3%, 36.7% { d: path($design-system-square); }
+  43.3%, 56.7% { d: path($design-system-triangle); }
+  63.3%, 76.7% { d: path($design-system-tall-bar); }
+  83.3%, 96.7% { d: path($design-system-thin-bar); }
 }

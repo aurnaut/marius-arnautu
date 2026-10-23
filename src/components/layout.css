@@ -47,6 +47,7 @@ a {
 a:active,
 a:hover {
   outline-width: 0;
+  text-decoration: none;
 }
 abbr[title] {
   border-bottom: none;
@@ -200,7 +201,8 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: hsla(0, 0%, 0%, 0.8);
+  color: var(--text);
+  background: var(--bg);
   font-family: 'Helvetica Neue LT Std', Arial, sans-serif;
   font-weight: normal;
   word-wrap: break-word;
@@ -401,7 +403,7 @@ pre {
   margin-bottom: 1.45rem;
   font-size: 0.85rem;
   line-height: 1.42;
-  background: hsla(0, 0%, 0%, 0.04);
+  background: var(--tint);
   border-radius: 3px;
   overflow: auto;
   word-wrap: normal;
@@ -480,7 +482,7 @@ hr {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: calc(1.45rem - 1px);
-  background: hsla(0, 0%, 0%, 0.2);
+  background: var(--rule);
   border: none;
   height: 1px;
 }
@@ -568,7 +570,7 @@ thead {
 td,
 th {
   text-align: left;
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
+  border-bottom: 1px solid var(--rule);
   font-feature-settings: "tnum";
   -moz-font-feature-settings: "tnum";
   -ms-font-feature-settings: "tnum";
@@ -588,7 +590,7 @@ td:last-child {
 }
 tt,
 code {
-  background-color: hsla(0, 0%, 0%, 0.04);
+  background-color: var(--tint);
   border-radius: 3px;
   font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
     "Liberation Mono", Menlo, Courier, monospace;
@@ -625,7 +627,7 @@ footer {
 }
 
 footer a {
-  color: #000000;
+  color: var(--fg);
 }
 
 .footer-nav {

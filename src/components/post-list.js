@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
@@ -15,12 +14,24 @@ export const TypeLink = ({ type }) => (
   <Link to={typePath(type)} className={`post-list__type ${type}`}>{type}</Link>
 );
 
+export const TypeLinks = ({ types }) => (
+  <span className="post-list__types">
+    {types.map(type => <TypeLink key={type} type={type} />)}
+  </span>
+);
+
 const PostList = ({ posts }) => (
   <div className="post-list">
     {posts.map(post => (
       <div key={post.node.id} className="post-list__item">
         <div className="post-list__content">
-          <TypeLink type={post.node.frontmatter.type} />
+          <div className="post-list__meta">
+            <TypeLinks types={post.node.frontmatter.type} />
+            <span className="post-list__separator" aria-hidden="true">·</span>
+            <span className="post-list__date">
+              {post.node.frontmatter.period || `Added ${timeAgo.format(new Date(post.node.frontmatter.date))}`}
+            </span>
+          </div>
           <h2 className="post-list__title">
             <Link to={post.node.fields.slug}>
               {post.node.frontmatter.title}
@@ -30,19 +41,6 @@ const PostList = ({ posts }) => (
           <div className="post-list__excerpt">
             <p>{post.node.frontmatter.summary || post.node.excerpt}</p>
           </div>
-          <p className="post-list__date">
-            {post.node.frontmatter.period || `Added ${timeAgo.format(new Date(post.node.frontmatter.date))}`}
-          </p>
-        </div>
-        <div className="post-list__thumbnail">
-          <Link to={post.node.fields.slug}>
-            <GatsbyImage
-              alt={`${post.node.frontmatter.title} thumbnail`}
-              image={getImage(post.node.frontmatter.thumbnail)}
-              width={100}
-              height={100}
-            />
-          </Link>
         </div>
       </div>
     ))}
@@ -64,15 +62,6 @@ export const query = graphql`
       title
       summary
       period
-      thumbnail {
-        childImageSharp {
-          gatsbyImageData(
-            width: 150
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-          )
-        }
-      }
     }
   }
 `;

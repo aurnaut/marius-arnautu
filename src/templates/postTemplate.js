@@ -1,17 +1,16 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import { TypeLink } from '../components/post-list';
+import { TypeLinks } from '../components/post-list';
+import { CoverHero } from '../components/covers';
 
-const PostTemplate = ({ data }) => {
-  const { markdownRemark } = data;
-  const { frontmatter, html } = markdownRemark;
-  const isCaseStudy = frontmatter.type !== 'article';
+const PostTemplate = ({ data, pageContext }) => {
+  const { frontmatter, html } = data.markdownRemark;
+  // When it was is shown with its types, as on the post lists
   const meta = [
     ['Role', frontmatter.role],
-    ['When', frontmatter.period],
     ['Team', frontmatter.team],
     ['Tools', frontmatter.tools],
   ].filter(([, value]) => value);
@@ -20,14 +19,16 @@ const PostTemplate = ({ data }) => {
     <Layout>
       <Seo title={frontmatter.title} description={frontmatter.summary} />
       <article className="case-study">
-        <Link className="case-study__back" to={isCaseStudy ? '/projects' : '/blog'}>
-          ← All {isCaseStudy ? 'work' : 'articles'}
-        </Link>
         <header className="case-study__header">
-          <TypeLink type={frontmatter.type} />
+          <CoverHero slug={pageContext.slug} title={frontmatter.title} />
+          <div className="post-list__meta">
+            <TypeLinks types={frontmatter.type} />
+            <span className="post-list__separator" aria-hidden="true">·</span>
+            <span className="post-list__date">{frontmatter.period || frontmatter.date}</span>
+          </div>
           <h1>{frontmatter.title}</h1>
           {frontmatter.summary && <p className="case-study__summary">{frontmatter.summary}</p>}
-          {meta.length > 0 ? (
+          {meta.length > 0 && (
             <dl className="case-study__meta">
               {meta.map(([label, value]) => (
                 <div key={label}>
@@ -36,8 +37,6 @@ const PostTemplate = ({ data }) => {
                 </div>
               ))}
             </dl>
-          ) : (
-            <span>{frontmatter.date}</span>
           )}
         </header>
         <div className="case-study__body" dangerouslySetInnerHTML={{ __html: html }} />

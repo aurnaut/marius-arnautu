@@ -1,0 +1,39 @@
+// Colour tokens. Dark follows the visitor's system setting,
+// unless the header toggle has set data-theme on <html>.
+@mixin dark-theme {
+  color-scheme: dark;
+  --bg: #212830;
+  --text: #D1D7E0;
+  --fg: #D1D7E0;
+  --tint: rgba(209, 215, 224, 0.08);
+  --rule: rgba(209, 215, 224, 0.2);
+  --divider: rgba(209, 215, 224, 0.5);
+  // Text over the homepage's shapes is blended with what's behind it, pixel by pixel, so it turns dark where it
+  // crosses a light shape. Its colour is the background plus the text colour, so over the background it shows as the text colour.
+  --overlap-fg: #F2FFFF;
+  --overlap-blend: difference;
+  --accent: #9C8CFF;
+}
+
+:root {
+  color-scheme: light;
+  --bg: #{$white};
+  --text: #{$black};
+  --fg: #{$black};
+  --tint: hsla(0, 0%, 0%, 0.04);
+  --rule: hsla(0, 0%, 0%, 0.15);
+  --divider: var(--fg);
+  --overlap-fg: var(--fg);
+  --overlap-blend: normal;
+  --accent: #{$purple};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-theme;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include dark-theme;
+}

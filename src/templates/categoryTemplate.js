@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
 import PostList from '../components/post-list';
-import ProjectsNav from '../components/projects-nav';
 
 const CategoryTemplate = ({ data, pageContext }) => {
   const title = pageContext.type.charAt(0).toUpperCase() + pageContext.type.slice(1);
@@ -12,7 +11,6 @@ const CategoryTemplate = ({ data, pageContext }) => {
   return (
     <Layout>
       <Seo title={title} />
-      <ProjectsNav />
       <PostList posts={data.allMarkdownRemark.edges} />
     </Layout>
   );

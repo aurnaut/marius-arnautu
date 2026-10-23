@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- The portfolio hierarchy as a pyramid: a solid fund at the top, everything below it outlined -->
+  <path d="M300 100L346 184H254Z" fill="#3A16D3"/>
+  <rect x="212" y="212" width="72" height="72" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <rect x="316" y="212" width="72" height="72" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <circle cx="196" cy="352" r="36" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <rect x="264" y="316" width="72" height="72" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <path d="M404 306L450 352L404 398L358 352Z" fill="none" stroke="#3A16D3" stroke-width="8" stroke-linejoin="miter"/>
+  <rect x="108" y="420" width="72" height="72" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <rect x="212" y="420" width="72" height="72" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <rect x="316" y="420" width="72" height="72" fill="none" stroke="#3A16D3" stroke-width="8"/>
+  <rect x="420" y="420" width="72" height="72" fill="none" stroke="#3A16D3" stroke-width="8"/>
+</svg>

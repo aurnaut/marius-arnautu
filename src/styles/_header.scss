@@ -2,20 +2,73 @@ header {
   padding: 20px;
 }
 
-header > div{
+// Only the site's own header lays its contents out across the page, not the headers inside posts
+.site-header > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo {
-  width: 28px;
-  margin-bottom: 0;
+.main-wrapper header {
+  padding: 0;
 }
 
-.todays-date {
-  font-size: 14px;
-  @media (min-width: $mq-smartphone) {
-    font-size: 16px;
+// The logo's lines take the theme's foreground colour
+.logo {
+  display: block;
+  width: $logo-width;
+  aspect-ratio: 26.2 / 38.1;
+  fill: none;
+  stroke: var(--fg);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  // Keyboard users still get a focus ring, mouse clicks don't
+  &:focus {
+    outline: none;
   }
+
+  &:focus-visible {
+    outline: 1px solid var(--fg);
+    outline-offset: 2px;
+  }
+
+  // Block, so the icon centres in the button instead of sitting on a text baseline
+  svg {
+    display: block;
+  }
+}
+
+.theme-toggle__sun {
+  fill: $orange;
+}
+
+.theme-toggle__moon {
+  fill: $purple;
+}
+
+// Trimmed to cap height and baseline, so the visible text centres on the toggle
+// rather than the line box, which keeps empty space for descenders below it
+.todays-date {
+  font-size: 12px;
+  line-height: 1;
+  text-box: trim-both cap alphabetic;
 }

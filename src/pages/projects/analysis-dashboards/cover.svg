@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Bar chart stepping up evenly: the first bar solid, the rest outlined (stroke inset so all bars line up) -->
+  <rect x="110" y="350" width="44" height="120" fill="#F76A6A"/>
+  <rect x="178" y="294" width="36" height="172" fill="none" stroke="#F76A6A" stroke-width="8"/>
+  <rect x="242" y="234" width="36" height="232" fill="none" stroke="#F76A6A" stroke-width="8"/>
+  <rect x="306" y="174" width="36" height="292" fill="none" stroke="#F76A6A" stroke-width="8"/>
+  <!-- An eye with the iris cut out, drawn on top of the last bar -->
+  <path d="M300 250Q405 150 510 250Q405 350 300 250Z M439 250a34 34 0 1 0 -68 0a34 34 0 1 0 68 0Z" fill="#24A529" fill-rule="evenodd"/>
+</svg>

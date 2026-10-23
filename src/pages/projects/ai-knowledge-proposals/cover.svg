@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- A pencil bent into a ring, its point closing in on its own eraser: a loop that corrects itself -->
+  <defs><mask id="groove" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="600">
+    <rect width="600" height="600" fill="#fff"/>
+    <path d="M430.1 182.9A175 175 0 1 1 245.9 133.6" stroke="#000" stroke-width="8" fill="none"/>
+  </mask></defs>
+  <path d="M384.2 110.9A207 207 0 0 1 433.1 141.4L391.9 190.5A143 143 0 0 0 358.2 169.4Z" fill="#F76A6A"/>
+  <path d="M433.1 141.4A207 207 0 1 1 257.0 97.5L312.0 125.4L270.3 160.1A143 143 0 1 0 391.9 190.5Z" fill="#EFB940" mask="url(#groove)"/>
+</svg>

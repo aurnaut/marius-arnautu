@@ -9,15 +9,14 @@ import GraphicsAnimation from "../components/graphics-animation";
 const IndexPage = ({ data}) => {
   const posts = data.allMarkdownRemark.edges;
   return (
-  <Layout>
+  <Layout showCoversNav={false}>
     <Seo title="Home" />
+    <GraphicsAnimation />
     <h1 className="tagline">
       <span> Hi, I'm Marius</span>
       I design and build<br/>
-      data-heavy B2B products.
+      digital products.
     </h1>
-    <GraphicsAnimation />
-    <h2 className="section-title">Selected work</h2>
     <PostList posts={posts} />
   </Layout>
   );

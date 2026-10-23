@@ -39,7 +39,7 @@ exports.createPages = ({ actions, graphql }) => {
     });
 
     // One listing page per project type, e.g. /projects/design/
-    const types = new Set(result.data.allMarkdownRemark.edges.map(({ node }) => node.frontmatter.type));
+    const types = new Set(result.data.allMarkdownRemark.edges.flatMap(({ node }) => node.frontmatter.type));
     types.delete('article');
     types.forEach(type => {
       createPage({
@@ -52,23 +52,32 @@ exports.createPages = ({ actions, graphql }) => {
 };
 
 // Case study fields are optional, so declare them rather than rely on inference
-exports.createSchemaCustomization = ({ actions }) => {
-  actions.createTypes(`
-    type MarkdownRemark implements Node {
+exports.createSchemaCustomization = ({ actions, schema }) => {
+  actions.createTypes([
+    `type MarkdownRemark implements Node {
       frontmatter: Frontmatter
-    }
-    type Frontmatter {
-      title: String
-      type: String
-      date: Date @dateformat
-      thumbnail: File @fileByRelativePath
-      summary: String
-      role: String
-      period: String
-      team: String
-      tools: String
-    }
-  `);
+    }`,
+    schema.buildObjectType({
+      name: `Frontmatter`,
+      fields: {
+        title: `String`,
+        // A short name for the covers menu
+        navTitle: `String`,
+        // A post can have one type (type: design) or several (type: [design, development])
+        type: {
+          type: `[String]`,
+          resolve: source => [].concat(source.type || []),
+        },
+        date: { type: `Date`, extensions: { dateformat: {} } },
+        thumbnail: { type: `File`, extensions: { fileByRelativePath: {} } },
+        summary: `String`,
+        role: `String`,
+        period: `String`,
+        team: `String`,
+        tools: `String`,
+      },
+    }),
+  ]);
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

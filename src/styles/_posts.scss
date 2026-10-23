@@ -2,84 +2,513 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  border: 1px solid $black;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  gap: 30px;
+  margin-bottom: 50px;
 
   &:last-child {
     margin-bottom: 0;
   }
 }
 
+.post-list__types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
 .post-list__type {
   position: relative;
+  display: inline-flex;
+  align-items: center;
   text-transform: capitalize;
   font-size: 12px;
+  line-height: 1;
   padding-left: 16px;
-  color: $black;
+  color: var(--fg);
+  text-decoration: none;
 
   &:visited,
-  &:focus {
-    color: $black;
+  &:focus,
+  &:hover {
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  // Shapes are centred on the label rather than pinned to the top of the line box
+  &:before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    content: '';
   }
 
   &.design:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-bottom: 9px solid $purple;
-    content: '';
+    top: calc(50% - 1.5px);
   }
 
   &.article:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 10px;
     height: 10px;
     background-color: $green;
-    content: '';
   }
 
   &.development:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 10px;
     height: 10px;
     background-color: $orange;
     border-radius: 10px;
-    content: '';
+    top: calc(50% - 1px);
+
   }
 }
 
-.post-list__thumbnail {
-  flex-shrink: 0;
-  margin-left: auto;
-  padding: 15px;
+// Shapes turn around their own centre, so rotating doesn't knock them off their path
+// A cover playing at the top of its case study, which sets it animating
+$cover-playing: '.cover-hero--playing';
 
-  a {
-    display: block;
-    line-height: 0;
-  }
+// Playing, the cover files its shapes into a report: they tuck under the solid sheet, nearest first,
+// the last by 1.16s, then the circle comes back as a logo on the sheet at 1.1s and the lines of writing draw in after it,
+// the last done by 1.75s, then the other two sheets slide out from behind it, the last there by 2.45s.
+// Coming back out, it all runs in reverse over the same time, the last sheet going back first,
+// so each change waits 2.45s less when it finished going in.
+.esg-cover__shape {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: translate 0.8s ease-in-out, rotate 0.8s ease-in-out;
+  transition-delay: calc(1.65s - var(--delay, 0s));
+}
 
-  img {
-    border-radius: 6px;
-    margin: 0;
-    vertical-align: middle;
+.esg-cover__sheet {
+  transition: translate 0.5s ease-out calc(1.95s - var(--delay));
+}
+
+.esg-cover__logo,
+.esg-cover__writing path {
+  transform-box: fill-box;
+  scale: 0;
+}
+
+.esg-cover__logo {
+  transform-origin: center;
+  transition: scale 0.3s ease-out 1.05s;
+}
+
+.esg-cover__writing path {
+  transform-origin: left center;
+  scale: 0 1;
+  transition: scale 0.35s ease-out calc(2.1s - var(--delay));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .esg-cover__shape {
+      translate: var(--x) var(--y);
+      rotate: var(--r, 0deg);
+      transition-delay: var(--delay, 0s);
+    }
+
+    .esg-cover__sheet {
+      translate: var(--x) 0;
+      transition-delay: var(--delay);
+    }
+
+    .esg-cover__logo {
+      scale: 1;
+      transition-delay: 1.1s;
+    }
+
+    .esg-cover__writing path {
+      scale: 1;
+      transition-delay: var(--delay);
+    }
   }
 }
 
+// The shapes orbit the ring's centre clockwise while the cover plays, and pause where they are when it doesn't
+.design-system-cover__shape {
+  transform-box: view-box;
+  transform-origin: 300px 300px;
+  animation: orbitUpright 12s linear infinite paused;
+}
+
+// The logo's hole morphs into each shape as it passes over the top, in time with the orbit, so it pauses with it.
+// Its own hole fades as it starts, uncovering the cut-out, and back over whichever shape it's taken when it stops.
+.design-system-cover__hole {
+  transition: opacity 0.4s ease-in-out;
+}
+
+.design-system-cover__cut {
+  animation: designSystemCut 12s ease-in-out infinite paused;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .design-system-cover__shape,
+    .design-system-cover__cut {
+      animation-play-state: running;
+    }
+
+    .design-system-cover__hole {
+      opacity: 0;
+    }
+  }
+}
+
+// The eye's pie chart changes its shares while the cover plays, and pauses where it is when it doesn't.
+// Each slice runs its own keyframes, all on the same 8s, at a steady pace.
+.dashboards-cover__slice {
+  animation: 8s linear infinite paused;
+}
+
+@for $i from 1 through 3 {
+  .dashboards-cover__slice--#{$i} {
+    animation-name: dashboardsSlice#{$i};
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} .dashboards-cover__slice {
+    animation-play-state: running;
+  }
+}
+
+// The pencil inches round the ring anticlockwise: its point backs away, writing a line as the pencil shortens,
+// then the eraser follows over the line, rubbing it out as the pencil grows back.
+// Runs while the cover plays and pauses where it is when it doesn't.
+.ai-cover__eraser,
+.ai-cover__point,
+.ai-cover__body,
+.ai-cover__line {
+  transform-box: view-box;
+  transform-origin: 300px 300px;
+  animation: 8s linear infinite paused;
+}
+
+.ai-cover__eraser { animation-name: pencilEraser; }
+.ai-cover__point { animation-name: pencilPoint; }
+.ai-cover__body { animation-name: pencilBody; }
+
+.ai-cover__line {
+  stroke: var(--fg);
+  animation-name: pencilLine;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .ai-cover__eraser,
+    .ai-cover__point,
+    .ai-cover__body,
+    .ai-cover__line {
+      animation-play-state: running;
+    }
+  }
+}
+
+
+// The squares make a slow half turn, the diamond turns level and grows to their size, the circle squares off,
+// and the fund at the top jumps, turning a third of a circle as it goes, and lands as an outline.
+// Coming back out, the rows' stagger runs in reverse, so the bottom row is the first to turn back.
+.portfolio-cover__square,
+.portfolio-cover__diamond {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.portfolio-cover__square,
+.portfolio-cover__diamond,
+.portfolio-cover__circle {
+  transition: rotate 0.8s ease-in-out, rx 0.8s ease-in-out;
+  transition-delay: calc(0.3s - var(--delay, 0s));
+}
+
+.portfolio-cover__square {
+  transition-duration: 1.4s;
+}
+
+.portfolio-cover__diamond rect {
+  transition: x 0.8s ease-in-out, y 0.8s ease-in-out, width 0.8s ease-in-out, height 0.8s ease-in-out;
+  transition-delay: inherit;
+}
+
+// Turns about the triangle's centroid rather than its box's centre, so a third of a turn lands it where it took off
+.portfolio-cover__fund {
+  transform-box: view-box;
+  transform-origin: 300px 156px;
+  transition: fill-opacity 1.4s ease-in-out, stroke-width 1.4s ease-in-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .portfolio-cover__square,
+    .portfolio-cover__diamond,
+    .portfolio-cover__circle {
+      transition-delay: var(--delay, 0s);
+    }
+
+    .portfolio-cover__square {
+      rotate: 180deg;
+    }
+
+    .portfolio-cover__diamond {
+      rotate: 45deg;
+    }
+
+    .portfolio-cover__diamond rect {
+      x: 368px;
+      y: 316px;
+      width: 72px;
+      height: 72px;
+    }
+
+    .portfolio-cover__circle {
+      rx: 0;
+    }
+
+    .portfolio-cover__fund {
+      fill-opacity: 0;
+      stroke-width: 8;
+      animation: fundJump 1.4s;
+    }
+  }
+}
+
+// The invoice's lines feed into the server one after another, top first, while a new set comes out of the margin,
+// then the server's status lights turn green once they're in. Runs while the cover plays.
+.metry-cover__line {
+  stroke-dashoffset: var(--start, 0px);
+}
+
+.metry-cover__light {
+  fill: $green;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .metry-cover__line {
+      animation: feedLine 3s var(--delay, 0s) infinite;
+    }
+
+    .metry-cover__light {
+      animation: statusLight 3s var(--delay, 0s) infinite;
+    }
+  }
+}
+
+// The business-as-usual dots march left along their lines, while the net zero pathways ease into waves
+// that flow left, dips and humps in turn, the ball riding up and down on the top one's end. Runs while the cover plays
+// and pauses where it is when it doesn't.
+.siera-cover__dots {
+  animation: marchDots 0.6s linear infinite paused;
+}
+
+.siera-cover__pathways {
+  animation: sieraUnfold 0.8s ease-in-out forwards paused, sieraFlow $siera-flow-time linear infinite paused;
+}
+
+.siera-cover__ball {
+  animation: sieraBall $siera-flow-time linear infinite paused;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .siera-cover__dots,
+    .siera-cover__pathways,
+    .siera-cover__ball {
+      animation-play-state: running;
+    }
+  }
+}
+
+// The grid's shapes merge into a star: the dividers shrink away one after another, then the top row's two shapes
+// move onto each other, then the bottom row's, then the two rows come together as the circle and triangle fade away
+// and the diamond grows and turns the square's colour. Then the star grows as the grid's sides are rubbed out clockwise,
+// at a steady speed so it runs on round the corners. Coming back out, the steps run in reverse,
+// so the sides come back first and the dividers last. Each step's delay going in is its --delay, or one of these,
+// and coming out each one waits for the ones after it to go back, the difference to the last side's delay.
+$branding-rows-delay: 2.2s;
+$branding-grow-delay: 2.8s;
+$branding-last-delay: 3.55s;
+
+.branding-cover__piece {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    translate 0.6s ease-in-out calc(#{$branding-last-delay} - var(--delay)),
+    scale 0.6s ease-in-out $branding-last-delay - $branding-rows-delay,
+    opacity 0.6s ease-in-out $branding-last-delay - $branding-rows-delay;
+}
+
+.branding-cover__recolour {
+  transition: fill 0.6s ease-in-out $branding-last-delay - $branding-rows-delay;
+}
+
+.branding-cover__row {
+  transition: translate 0.6s ease-in-out $branding-last-delay - $branding-rows-delay;
+}
+
+.branding-cover__grow {
+  transform-box: view-box;
+  transform-origin: 300px 300px;
+  transition: scale 0.6s ease-in-out $branding-last-delay - $branding-grow-delay;
+}
+
+.branding-cover__divider,
+.branding-cover__side {
+  transform-box: fill-box;
+  transform-origin: var(--end, center);
+  transition: scale 0.6s ease-in-out calc(#{$branding-last-delay} - var(--delay));
+}
+
+.branding-cover__side {
+  transition-duration: 0.25s;
+  transition-timing-function: linear;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .branding-cover__piece {
+      translate: var(--x) var(--dy);
+      scale: var(--size);
+      opacity: var(--fade);
+      transition-delay: var(--delay), $branding-rows-delay, $branding-rows-delay;
+    }
+
+    .branding-cover__recolour {
+      fill: $purple;
+      transition-delay: $branding-rows-delay;
+    }
+
+    .branding-cover__row {
+      translate: 0 var(--y);
+      transition-delay: $branding-rows-delay;
+    }
+
+    .branding-cover__grow {
+      scale: 1.8;
+      transition-delay: $branding-grow-delay;
+    }
+
+    .branding-cover__divider,
+    .branding-cover__side {
+      scale: var(--scale);
+      transition-delay: var(--delay);
+    }
+  }
+}
+
+
+// The book's text is shelved: the spine turns and stretches into a shelf across the bookcase,
+// 432 being the bookcase's width and 272 the spine's length, and the lines move onto the two rows one after another,
+// each turning about its own centre, a few changing colour. Then more books grow in one after another, from 0.6s,
+// the last at 1.41s, so it's all done by 1.81s.
+// Coming back out, it all runs in reverse over the same time: each change waits for whatever came after it going in
+// to undo first, which is 1.81s less when it finished going in.
+.library-cover__spine {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: rotate 0.6s ease-in-out 1.21s, scale 0.6s ease-in-out 1.21s;
+}
+
+.library-cover__line {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: translate 0.6s ease-in-out, rotate 0.6s ease-in-out, stroke 0.6s ease-in-out;
+  transition-delay: calc(1.21s - var(--delay));
+}
+
+.library-cover__extra {
+  transform-box: fill-box;
+  transition: scale 0.4s ease-out calc(1.41s - var(--delay));
+}
+
+.library-cover__extra--standing {
+  transform-origin: center bottom;
+  scale: 1 0;
+}
+
+.library-cover__extra--flat {
+  transform-origin: left center;
+  scale: 0 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .library-cover__spine {
+      rotate: 90deg;
+      scale: 1 1.588;
+      transition-delay: 0s;
+    }
+
+    .library-cover__line {
+      translate: var(--x) var(--y);
+      rotate: var(--turn);
+      stroke: var(--colour, #EFB940);
+      transition-delay: var(--delay);
+    }
+
+    .library-cover__extra {
+      scale: 1;
+      transition-delay: var(--delay);
+    }
+  }
+}
+
+
+// The sneaker's laces become a running track: they run on down to the foot of the upper one after another,
+// 0.4s each, the last done by 0.85s, then the lanes turn red, then from 1.25s the finish line runs down them,
+// every 1.2s, for as long as the cover plays.
+// Coming back out, the finish line goes, the red fades, then the laces draw back up, the last one down first.
+.sneakerz-cover__lace {
+  transition: stroke-dasharray 0.4s ease-in-out calc(0.85s - var(--delay));
+}
+
+.sneakerz-cover__lanes {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} {
+    .sneakerz-cover__lace {
+      stroke-dasharray: 1 1;
+      transition-delay: var(--delay);
+    }
+
+    .sneakerz-cover__lanes {
+      opacity: 1;
+      transition-delay: 0.85s;
+    }
+
+    .sneakerz-cover__finish {
+      animation: sneakerFinish 1.2s linear 1.25s infinite;
+    }
+  }
+}
+
+// The "x"'s strokes spin in opposite directions while the cover plays, a turn every 6s
+// at a steady speed, and pause where they are when it doesn't. They turn about the cover's centre.
+.tedx-cover__stroke {
+  transform-box: view-box;
+  transform-origin: 300px 300px;
+  rotate: var(--turn);
+  animation: tedxSpin 6s linear infinite paused;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #{$cover-playing} .tedx-cover__stroke {
+    animation-play-state: running;
+  }
+}
 
 .post-list__content {
-  padding: 15px;
   text-align: left;
 }
 
@@ -88,43 +517,28 @@
   line-height: 1;
 
   a {
-    color: $black;
-    font-size: 18px;
+    color: var(--fg);
+    font-size: 20px;
     font-weight: normal;
   }
 }
 
+.post-list__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.post-list__separator,
 .post-list__date {
   font-size: 12px;
-  margin-top: 20px;
-  margin-bottom: 0;
   line-height: 1;
 }
 
 .post-list__excerpt {
   p {
-    font-size: 16px;
+    font-size: 12px;
     margin-bottom: 0;
-  }
-}
-
-.projects-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0;
-
-  a {
-    padding: 6px 14px;
-    border: 1px solid $black;
-    border-radius: 20px;
-    color: $black;
-    font-size: 14px;
-    text-decoration: none;
-
-    &.is-active {
-      background: $black;
-      color: $white;
-    }
   }
 }
