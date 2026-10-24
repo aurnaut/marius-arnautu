@@ -41,7 +41,7 @@ Evora acquired Metry at the start of 2024, and I worked with the team in Gothenb
 
 Filters for several statuses at once and for **unassigned cases**, so team leads spot work falling through the cracks.
 
-<video class="bleed" src="/projects/collection-case-portal/invoice-list-assign.webm" aria-label="An agent clicks Assign to me on an unassigned case, and their name replaces Unassigned in the row" controls autoplay muted loop playsinline preload="metadata"></video>
+<video class="bleed" src="/projects/collection-case-portal/ccp-invoice-list-assign.webm" aria-label="An agent clicks Assign to me on an unassigned case, and their name replaces Unassigned in the row" controls autoplay muted loop playsinline preload="metadata"></video>
 
 <div class="callout">
 
