@@ -5,7 +5,7 @@ navTitle: "Invoice Case Workflow"
 date: 2025-01-13
 thumbnail: "./cover.svg"
 summary: Metry's invoice cases, turning utility bills into validated readings
-role: Lead front-end developer and designer. I was the top contributor and built the invoice workflow end to end.
+role: Lead front-end developer and designer.
 period: 2024 – 2025
 tools: Figma, Dovetail, Google Analytics, React, TypeScript, react-hook-form, Jest
 ---
@@ -23,7 +23,7 @@ Evora acquired Metry at the start of 2024, and I worked with the team in Gothenb
 - **Some cases can't be completed**, but the record must stay.
 - **Shared queues:** ownership must be obvious.
 
-## What I built
+## The solution
 
 ### A queue that supports triage
 
