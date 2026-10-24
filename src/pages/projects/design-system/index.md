@@ -4,7 +4,7 @@ title: One design system for every Evora product
 navTitle: "Design System"
 date: 2026-10-15
 thumbnail: "./cover.svg"
-summary: One design system, in Figma and code, behind every Evora product
+summary: Three apps that look and behave like one product
 role: Principal Designer and lead contributor.
 period: 2023 – present
 tools: Figma, React, TypeScript, npm package, Tailwind 4, Radix UI, Storybook, Chromatic
@@ -62,6 +62,7 @@ The Figma library mirrors the code: the same component names, the same structure
 ## Small pieces, bigger components
 
 Simple components such as checkboxes, buttons and menus combine into larger ones. The **data table** is built from them, adding sticky columns, filters you can share as a link, and the same formatting in every app.
+
 <div class="callout">
 
 **Build on Radix primitives.** Keyboard support and focus management come from a well-tested base, so a small team could spend its time on domain-specific data components.
