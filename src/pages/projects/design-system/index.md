@@ -43,7 +43,7 @@ I moved components out in small, reviewable steps, keeping existing APIs where p
 I set up the tokens as Figma variables for colour, spacing and sizing, in two layers:
 
 - **Primitives:** the raw values, such as Evora's palette ramps.
-- **Semantic tokens:** what each value is for, such as background, border or destructive. Components use these, and each one has a **light** and a **dark** mode.
+- **Semantic tokens:** what each value is for, such as background, border or destructive. Components use these, and each one has a **light** and a **dark** mode, with text contrast checked against WCAG AA in both.
 
 In code they become CSS variables, exposed through a Tailwind preset.
 
