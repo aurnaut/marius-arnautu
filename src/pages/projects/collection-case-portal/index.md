@@ -3,7 +3,7 @@ type: development
 title: "Metry: a case workflow for data-collection agents"
 navTitle: "Invoice Case Workflow"
 date: 2025-01-13
-thumbnail: './cover.svg'
+thumbnail: "./cover.svg"
 summary: Metry's invoice cases, turning utility bills into validated readings
 role: Lead front-end developer and designer. I was the top contributor and built the invoice workflow end to end.
 period: 2024 – 2025
@@ -27,9 +27,21 @@ When a utility's automated feed fails, an operations agent keys in consumption f
 
 ### A queue that supports triage
 
-<div class="shot-placeholder">Screenshot: invoice case list with status and agent filters</div>
+<div class="bleed only-wide">
+
+![The invoice case queue: agent, draft, comment and status filters above a table of cases, with Received, Delivered and Rejected statuses, draft tags, comment counts, and "Assign to me" on the unassigned cases](./invoice-list-hero.png)
+
+</div>
+
+<div class="bleed only-narrow">
+
+![Close-up of the invoice case queue: Received, Delivered and Rejected statuses beside each file, with "Assign to me" on the unassigned cases and "Unassign" on the ones an agent has taken](./invoice-list-close-up.png)
+
+</div>
 
 Filters for several statuses at once and for **unassigned cases**, so team leads spot work falling through the cracks.
+
+<video class="bleed" src="/projects/collection-case-portal/invoice-list-assign.webm" aria-label="An agent clicks Assign to me on an unassigned case, and their name replaces Unassigned in the row" controls autoplay muted loop playsinline preload="metadata"></video>
 
 <div class="callout">
 
@@ -39,11 +51,23 @@ Filters for several statuses at once and for **unassigned cases**, so team leads
 
 ### A case detail that prevents bad data
 
-<div class="shot-placeholder">Screenshot: invoice case detail with EAN meters and a validation error</div>
+<div class="bleed framed only-wide">
+
+![An invoice case: a meter form with the EAN, address, type, period, consumption, metric and unit on the left, and the electricity invoice open in a PDF viewer on the right. Save draft, Reject, Add another meter and Submit case frame the form](./case-detail.png)
+
+</div>
+
+<div class="bleed only-narrow">
+
+![Close-up of an invoice case: the Received status above a meter form with the EAN, address, type, period, consumption, metric and unit, with the invoice open beside it](./case-detail-close-up.png)
+
+</div>
 
 - Specific errors for unknown EANs, and creating a new meter from inside the case instead of escalating.
 - Several meters per invoice, and drafts.
 - Reversible rejection that locks the case's fields.
+
+<video class="bleed" src="/projects/collection-case-portal/ccp-case-flow.webm" aria-label="An agent opens a draft case from the queue, scrolls the invoice to the meter reading, keys the consumption into the form and submits the case" controls autoplay muted loop playsinline preload="metadata"></video>
 
 ### From failure to case automatically
 

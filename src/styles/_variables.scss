@@ -8,6 +8,10 @@ $container-width: 760px;
 $logo-width: 28px;
 // The covers menu's covers, a little bigger than the logo, to be easier to make out and to tap
 $covers-nav-size: 36px;
+// Wide enough for the gutter either side of the column to fit a cover with the page's 20px margin both sides of it
+$covers-nav-beside: $container-width + 2 * ($covers-nav-size + 40px);
+// How far media that bleeds out of the column stays in from the page's margins to clear the covers beside it
+$bleed-covers-inset: $covers-nav-size + 20px;
 
 // Colors
 $white: #FFFFFF;
