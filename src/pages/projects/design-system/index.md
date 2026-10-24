@@ -6,7 +6,7 @@ date: 2026-10-15
 thumbnail: './cover.svg'
 summary: A documented React component library shared across Evora's products
 role: Principal Designer and lead contributor. I wrote about 60% of the library and owned the core organisms and the documentation pipeline.
-period: 2025 – present
+period: 2023 – present
 tools: Figma, React, TypeScript, Tailwind 4, Radix UI, Storybook, Chromatic
 ---
 

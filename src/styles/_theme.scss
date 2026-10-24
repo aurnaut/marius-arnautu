@@ -3,18 +3,20 @@
 @mixin dark-theme {
   color-scheme: dark;
   --bg: #212830;
-  --text: #D1D7E0;
-  --fg: #D1D7E0;
+  --text: #d1d7e0;
+  --fg: #d1d7e0;
   --tint: rgba(209, 215, 224, 0.08);
   --rule: rgba(209, 215, 224, 0.2);
-  --divider: rgba(209, 215, 224, 0.5);
+  --divider: rgba(209, 215, 224, 0.25);
   // White screenshot edges already stand out from the dark background
   --frame: transparent;
   // Text over the homepage's shapes is blended with what's behind it, pixel by pixel, so it turns dark where it
   // crosses a light shape. Its colour is the background plus the text colour, so over the background it shows as the text colour.
-  --overlap-fg: #F2FFFF;
+  --overlap-fg: #f2ffff;
   --overlap-blend: difference;
-  --accent: #9C8CFF;
+  --accent: #9c8cff;
+  --purple: #6448ff;
+  --callout-bg: rgba(255, 255, 255, 0.06);
 }
 
 :root {
@@ -29,6 +31,16 @@
   --overlap-fg: var(--fg);
   --overlap-blend: normal;
   --accent: #{$purple};
+  --purple: #{$purple};
+  --callout-bg: hsla(0, 0%, 0%, 0.06);
+}
+
+// The covers are drawn with the light theme's purple written into them, so it's swapped for the token here.
+[fill="#3A16D3"] {
+  fill: var(--purple);
+}
+[stroke="#3A16D3"] {
+  stroke: var(--purple);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -62,7 +62,7 @@ header {
 }
 
 .theme-toggle__moon {
-  fill: $purple;
+  fill: var(--purple);
 }
 
 // Trimmed to cap height and baseline, so the visible text centres on the toggle
