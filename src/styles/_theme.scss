@@ -14,6 +14,10 @@
   // crosses a light shape. Its colour is the background plus the text colour, so over the background it shows as the text colour.
   --overlap-fg: #f2ffff;
   --overlap-blend: difference;
+  // Secondary text, like the type and date above a post, 5.7:1 on the background
+  --muted: #98a1ad;
+  // The background plus --muted, so blended over the background it shows exactly as --muted
+  --overlap-muted: #b9c9dd;
   --accent: #9c8cff;
   --purple: #6448ff;
   --callout-bg: rgba(255, 255, 255, 0.06);
@@ -30,6 +34,9 @@
   --frame: hsla(0, 0%, 0%, 0.08);
   --overlap-fg: var(--fg);
   --overlap-blend: normal;
+  // Secondary text, like the type and date above a post, 5.7:1 on the background
+  --muted: #666666;
+  --overlap-muted: var(--muted);
   --accent: #{$purple};
   --purple: #{$purple};
   --callout-bg: hsla(0, 0%, 0%, 0.06);

@@ -37,10 +37,6 @@ const PostList = ({ posts }) => (
               {post.node.frontmatter.title}
             </Link>
           </h2>
-
-          <div className="post-list__excerpt">
-            <p>{post.node.frontmatter.summary || post.node.excerpt}</p>
-          </div>
         </div>
       </div>
     ))}
@@ -52,7 +48,6 @@ export default PostList;
 export const query = graphql`
   fragment PostListItem on MarkdownRemark {
     id
-    excerpt(pruneLength: 250)
     fields {
       slug
     }
@@ -60,7 +55,6 @@ export const query = graphql`
       date(formatString: "MMMM DD, YYYY")
       type
       title
-      summary
       period
     }
   }

@@ -70,8 +70,12 @@
 h1.tagline,
 .post-list__title a,
 .post-list__separator,
-.post-list__date,
-.post-list__excerpt p {
+.post-list__date {
   color: var(--overlap-fg);
   mix-blend-mode: var(--overlap-blend);
+}
+
+.post-list__separator,
+.post-list__date {
+  color: var(--overlap-muted);
 }

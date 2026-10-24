@@ -616,30 +616,75 @@ pre tt:after {
   content: "";
 }
 
+/* The page fills at least the screen, and the column grows into what's left over,
+   so on a short page the footer sits at the bottom of the screen instead of under the content */
+#gatsby-focus-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.site-body {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .main-wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
   padding: 0 20px;
 }
 
+/* A flex item's auto margins would shrink the column to its content, so it's given the full width to cap */
+.main-wrapper > main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+/* On a long page, a clear break between the end of the content and the footer */
+/* The copyright and links on one baseline, dotted apart like the type and date above a post */
 footer {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 100px;
   font-size: 14px;
-  text-align: center;
   padding: 20px 0;
 }
 
 footer a {
   color: var(--fg);
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus-visible {
+  text-decoration: underline;
 }
 
 .footer-nav {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 5px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
-.footer-nav li { 
-  display: inline-block;
-  margin: 0 5px;
+.footer-nav li {
+  margin: 0;
+}
+
+/* Outside the link, so its underline doesn't run under it, and left out by screen readers */
+.footer-nav li::before {
+  content: "·";
+  content: "·" / "";
+  margin-right: 8px;
+  color: var(--muted);
 }
 
 @media only screen and (max-width: 480px) {
