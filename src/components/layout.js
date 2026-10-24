@@ -18,7 +18,7 @@ const Layout = ({ children, showCoversNav = true, narrow = false }) => {
         <div className="main-wrapper">
           <main className={narrow ? "container container--narrow" : "container"}>{children}</main>
           <footer>
-          © {new Date().getFullYear()}
+            <span>© {new Date().getFullYear()}</span>
             <ul className="footer-nav">
               <li><Link to="/about">About</Link></li>
               <li><a href="mailto:marius.arnautu@gmail.com">Contact</a></li>

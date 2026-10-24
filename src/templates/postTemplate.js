@@ -6,6 +6,13 @@ import Seo from '../components/seo';
 import { TypeLinks } from '../components/post-list';
 import { CoverHero } from '../components/covers';
 
+// gatsby-remark-images sizes every image for the reading column, so images that bleed out of it to the
+// page's margins would load a file too small for them. Their sizes are the page's width instead.
+const sizeBleedImages = (html) =>
+  html.replace(/<div class="bleed[^"]*">[\s\S]*?<\/div>/g, (block) =>
+    block.replace(/sizes="[^"]*"/g, 'sizes="100vw"'),
+  );
+
 const PostTemplate = ({ data, pageContext }) => {
   const { frontmatter, html } = data.markdownRemark;
   // When it was is shown with its types, as on the post lists
@@ -39,7 +46,7 @@ const PostTemplate = ({ data, pageContext }) => {
             </dl>
           )}
         </header>
-        <div className="case-study__body" dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="case-study__body" dangerouslySetInnerHTML={{ __html: sizeBleedImages(html) }} />
       </article>
     </Layout>
   );

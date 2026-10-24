@@ -32,7 +32,10 @@ module.exports = {
         background_color: `#FFFFFF`,
         theme_color: `#3A16D3`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        // The home screen and Apple touch icons, on a tile as iOS fills transparency with black.
+        // The tab's favicon is the bare logo instead, linked in gatsby-ssr.js.
+        icon: `src/images/icon.svg`,
+        include_favicon: false,
       },
     },
     {

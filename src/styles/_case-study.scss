@@ -12,13 +12,16 @@
   margin: 0 auto;
 }
 
+// The page between its margins, which media that bleeds out of the column measures itself against
+.main-wrapper {
+  container-type: inline-size;
+}
+
 .container--narrow {
   max-width: $container-narrow-width;
 }
 
 .case-study {
-  padding-bottom: 40px;
-
   h2,
   h3,
   h4,
@@ -124,6 +127,57 @@
     margin: 30px 0;
   }
 
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 30px 0;
+  }
+
+  // Breaks out of the reading column to the page's margins, in line with the header
+  .bleed {
+    width: 100cqw;
+    max-width: none;
+    margin: 40px 0 40px calc(50% - 50cqw);
+
+    // Clear of the covers menu where it sits beside the column, by the same amount both sides to stay centred
+    @media (min-width: $covers-nav-beside) {
+      width: calc(100cqw - 2 * #{$bleed-covers-inset});
+      margin-left: calc(50% - 50cqw + #{$bleed-covers-inset});
+    }
+
+    p {
+      margin: 0;
+    }
+
+    // gatsby-remark-images caps the image at its maxWidth with an inline style
+    .gatsby-resp-image-wrapper {
+      max-width: none !important;
+    }
+  }
+
+  // A whole desktop screen is too small to read on a phone, so phones get a close-up of it instead.
+  // The images are lazy loaded, and the hidden one isn't fetched.
+  .only-wide {
+    display: none;
+
+    @media (min-width: $mq-smartphone) {
+      display: block;
+    }
+  }
+
+  .only-narrow {
+    @media (min-width: $mq-smartphone) {
+      display: none;
+    }
+  }
+
+  // An edge for screenshots whose own edges are white, which would otherwise run into the page
+  .framed .gatsby-resp-image-wrapper,
+  video.framed {
+    border: 1px solid var(--frame);
+  }
+
   figcaption {
     font-size: 14px;
     margin-top: 10px;
@@ -185,7 +239,7 @@ $flow-dot: 20px;
 
   // Non-breaking spaces, as plain ones would collapse into one
   p:first-child::before {
-    content: 'Decision\00a0\00a0\2192\00a0\00a0';
+    content: "Decision\00a0\00a0\2192\00a0\00a0";
   }
 
   p:first-child::before,
@@ -195,7 +249,7 @@ $flow-dot: 20px;
 
   // Breaks the line after the lead-in, so the reasoning starts 10px below
   p > strong:first-child::after {
-    content: '';
+    content: "";
     display: block;
     margin-bottom: 10px;
   }

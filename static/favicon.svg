@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6.95 -1 40.1 40.1">
+  <!-- The header's logo lines, the full height of the tab icon, drawn heavier so they hold up at 16px.
+       They take the same colours as the site's text, following the browser's light or dark mode. -->
+  <style>
+    g { stroke: #1c1c1c; }
+    @media (prefers-color-scheme: dark) {
+      g { stroke: #d1d7e0; }
+    }
+  </style>
+  <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0.5 9L16.9 9"/>
+    <path d="M0.5 9L0.5 37.6"/>
+    <path d="M8.9 9L8.9 29.2"/>
+    <path d="M16.9 9L16.9 20.5"/>
+    <path d="M0.5 9L9.2 0.5"/>
+    <path d="M9.2 0.5L25.7 0.5"/>
+    <path d="M25.7 0.5L16.9 9"/>
+    <path d="M25.7 0.5L25.7 12.1"/>
+  </g>
+</svg>
