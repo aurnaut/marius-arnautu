@@ -7,15 +7,16 @@ import CoversNav from "./covers-nav"
 import "./layout.css"
 import '../styles/styles.scss'
 
-// Every page but the homepage carries the covers menu, which leads with the projects itself
-const Layout = ({ children, showCoversNav = true }) => {
+// Every page but the homepage carries the covers menu, which leads with the projects itself.
+// The homepage's short titles also sit in a narrower column.
+const Layout = ({ children, showCoversNav = true, narrow = false }) => {
   return (
     <>
       <Header />
       <div className="site-body">
         {showCoversNav && <CoversNav />}
         <div className="main-wrapper">
-          <main className="container">{children}</main>
+          <main className={narrow ? "container container--narrow" : "container"}>{children}</main>
           <footer>
           © {new Date().getFullYear()}
             <ul className="footer-nav">
@@ -32,6 +33,7 @@ const Layout = ({ children, showCoversNav = true }) => {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   showCoversNav: PropTypes.bool,
+  narrow: PropTypes.bool,
 }
 
 export default Layout

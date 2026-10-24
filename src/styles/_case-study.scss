@@ -12,6 +12,10 @@
   margin: 0 auto;
 }
 
+.container--narrow {
+  max-width: $container-narrow-width;
+}
+
 .case-study {
   padding-bottom: 40px;
 
@@ -96,12 +100,20 @@
   h3 {
     font-size: 18px;
     margin-top: 30px;
+
+    @media (min-width: $mq-smartphone) {
+      font-size: 20px;
+    }
   }
 
   p,
   li {
     font-size: 16px;
     line-height: 1.6;
+
+    @media (min-width: $mq-smartphone) {
+      font-size: 18px;
+    }
   }
 
   a {
@@ -119,6 +131,8 @@
 }
 
 // Numbered steps for flows and wizards
+$flow-dot: 20px;
+
 .flow {
   list-style: none;
   margin: 30px 0;
@@ -128,25 +142,31 @@
   li {
     position: relative;
     counter-increment: flow;
-    padding-left: 42px;
+    padding-left: 34px;
     margin-bottom: 0;
 
     & + li {
       margin-top: 24px;
     }
 
+    // The number is trimmed to cap height and baseline, then padded out to the dot's size, so the visible digits
+    // centre in it rather than the line box. The dot sits level with the top of the step.
     &:before {
       position: absolute;
       top: 0;
       left: 0;
-      width: 26px;
-      height: 26px;
-      border-radius: 26px;
-      background: $purple;
-      color: $white;
-      font-size: 13px;
-      line-height: 26px;
+      box-sizing: border-box;
+      width: $flow-dot;
+      height: $flow-dot;
+      padding: calc(($flow-dot - 1cap) / 2) 0;
+      border-radius: 50%;
+      background: var(--fg);
+      color: var(--bg);
+      font-size: 11px;
+      font-weight: bold;
+      line-height: 1;
       text-align: center;
+      text-box: trim-both cap alphabetic;
       content: counter(flow);
     }
 
@@ -156,17 +176,12 @@
   }
 }
 
-// A decision pulled out of the body copy, ruled off with dashes, its lead-in on a line of its own after a label,
-// both styled like the meta block's labels. A dashed border can't set its dashes' length, so the rules are drawn.
-$callout-dash: 6px;
-$callout-gap: 5px;
-
+// A decision pulled out of the body copy, set on a light panel, its lead-in on a line of its own after a label,
+// both styled like the meta block's labels.
 .callout {
-  $rule: repeating-linear-gradient(to right, var(--divider) 0 $callout-dash, transparent $callout-dash $callout-dash + $callout-gap);
-
   margin: 30px 0;
-  padding: 20px 0;
-  background: $rule top / 100% 1px no-repeat, $rule bottom / 100% 1px no-repeat;
+  padding: 15px 20px;
+  background: var(--callout-bg);
 
   // Non-breaking spaces, as plain ones would collapse into one
   p:first-child::before {

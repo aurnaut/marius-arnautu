@@ -47,7 +47,7 @@
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 16px solid $purple;
+    border-bottom: 16px solid var(--purple);
 
     animation: moveTriangle 40s linear infinite;
   }
