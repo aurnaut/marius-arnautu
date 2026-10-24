@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
@@ -88,6 +89,15 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       name: `slug`,
       value: slug,
+    });
+  }
+
+  // A project's cover, as markup, for the covers menu to draw inline, where the theme's colours reach it
+  if (node.internal.type === `File` && node.sourceInstanceName === `markdown-pages` && node.name === `cover` && node.extension === `svg`) {
+    createNodeField({
+      node,
+      name: `svg`,
+      value: fs.readFileSync(node.absolutePath, `utf8`),
     });
   }
 };
