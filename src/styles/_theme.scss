@@ -18,6 +18,8 @@
   --muted: #98a1ad;
   // The background plus --muted, so blended over the background it shows exactly as --muted
   --overlap-muted: #b9c9dd;
+  // Graphics that should sit back, like the covers menu at rest, 2.1:1 on the background
+  --faded: #525a65;
   --accent: #9c8cff;
   --purple: #6448ff;
   --callout-bg: rgba(255, 255, 255, 0.06);
@@ -37,6 +39,8 @@
   // Secondary text, like the type and date above a post, 5.7:1 on the background
   --muted: #666666;
   --overlap-muted: var(--muted);
+  // Graphics that should sit back, like the covers menu at rest, 2:1 on the background
+  --faded: #b5b5b5;
   --accent: #{$purple};
   --purple: #{$purple};
   --callout-bg: hsla(0, 0%, 0%, 0.06);

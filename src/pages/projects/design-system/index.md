@@ -5,7 +5,7 @@ navTitle: "Design System"
 date: 2026-10-15
 thumbnail: "./cover.svg"
 summary: Three apps that look and behave like one product
-role: Principal Designer and lead contributor.
+role: Principal Designer and lead contributor. I turned the local UI kit into a versioned package, set up the tokens in Figma and code, and kept the Figma library and the components in step.
 period: 2023 – present
 tools: Figma, React, TypeScript, npm package, Tailwind 4, Radix UI, Storybook, Chromatic
 ---
@@ -14,15 +14,35 @@ tools: Figma, React, TypeScript, npm package, Tailwind 4, Radix UI, Storybook, C
 
 The new platform started with a local UI kit inside the main app. When an internal admin console arrived, components began to be copied between repos and drift, so the same action could look and behave differently from one app to the next. I turned the kit into a versioned, documented package that every app installs.
 
-<div class="bleed only-light">
+<div class="bleed only-wide">
+
+<div class="only-light">
 
 ![The library's components on light cards in a masonry grid: a data table of assets with EPC ratings across the top, then a date picker, multi-select, tooltip, buttons, stepper, switch and checkbox, timeline, tabs, select, autocomplete, badges, loading states and a month range picker](./components-grid.png)
 
 </div>
 
-<div class="bleed only-dark">
+<div class="only-dark">
 
 ![The library's components on dark cards in a masonry grid: a data table of assets with EPC ratings across the top, then a date picker, multi-select, tooltip, buttons, stepper, switch and checkbox, timeline, tabs, select, autocomplete, badges, loading states and a month range picker](./components-grid-dark.png)
+
+</div>
+
+</div>
+
+<div class="bleed only-narrow">
+
+<div class="only-light">
+
+![A close-up of four of the library's components on light cards: a data table of assets with EPC ratings and pagination, a date picker, buttons and a stepper](./components-close-up.png)
+
+</div>
+
+<div class="only-dark">
+
+![A close-up of four of the library's components on dark cards: a data table of assets with EPC ratings and pagination, a date picker, buttons and a stepper](./components-close-up-dark.png)
+
+</div>
 
 </div>
 

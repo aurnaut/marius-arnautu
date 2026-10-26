@@ -16,13 +16,15 @@
   gap: 20px;
 }
 
+// Trimmed to cap height and baseline, so the shape centres on the visible label rather than the line box,
+// whose space above and below the text differs between browsers
 .post-list__type {
   position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
   text-transform: capitalize;
   font-size: 14px;
   line-height: 1;
+  text-box: trim-both cap alphabetic;
   padding-left: 18px;
   color: var(--muted);
   text-decoration: none;

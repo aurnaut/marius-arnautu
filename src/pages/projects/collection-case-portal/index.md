@@ -5,9 +5,9 @@ navTitle: "Invoice Case Workflow"
 date: 2025-01-13
 thumbnail: "./cover.svg"
 summary: Metry's invoice cases, turning utility bills into validated readings
-role: Lead front-end developer and designer.
+role: Principal Designer and lead front-end developer. I designed and built the invoice cases and moved the app onto Evora's design system.
 period: 2024 – 2025
-tools: Figma, Dovetail, Google Analytics, React, TypeScript, react-hook-form, Jest
+tools: Figma, Dovetail, Google Analytics, Evora design system, React, TypeScript, react-hook-form, Jest
 ---
 
 ## Context
@@ -16,7 +16,7 @@ When a utility's automated feed fails, an operations agent keys in consumption f
 
 Evora acquired Metry at the start of 2024, and I worked with the team in Gothenburg, Sweden, to extend their existing Collection Case Portal. Until then, readings came in only through robots and scrapers; this work added manual invoice parsing for when they fall short. Part of it was re-building the app on Evora's [design system](/projects/design-system/).
 
-## The problem(s)
+## The problem
 
 - **Volume:** every extra click is multiplied.
 - **Messy inputs:** long EAN meter codes, easy to mistype, sometimes unknown.
