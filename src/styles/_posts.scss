@@ -568,8 +568,10 @@ $branding-last-delay: 3.55s;
   gap: 12px;
 }
 
+// Trimmed like the type labels, so centring them in the row lines up the text, not the line boxes
 .post-list__separator,
 .post-list__date {
   font-size: 14px;
   line-height: 1;
+  text-box: trim-both cap alphabetic;
 }

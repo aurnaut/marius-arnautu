@@ -119,6 +119,13 @@
     }
   }
 
+  // The about page's text, kept at the summary's size at every width
+  p.about-text,
+  .about-text li,
+  .experience li {
+    font-size: 16px;
+  }
+
   a {
     color: var(--accent);
   }
@@ -399,17 +406,25 @@ $flow-dot: 20px;
   text-align: center;
 }
 
+// Below this, each role's dates go on a line of their own, rather than only the roles too long to fit beside them
+$experience-one-line: 740px;
+
 .experience {
   list-style: none;
   margin-left: 0;
 
   li {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 0 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--rule);
+
+    @media (min-width: $experience-one-line) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
 }
 
