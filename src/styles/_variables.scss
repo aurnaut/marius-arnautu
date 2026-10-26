@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // Media Queries
 $mq-smartphone: 640px;
 $mq-tablet: 768px;
@@ -7,6 +9,7 @@ $mq-desktop: 1280px;
 $container-width: 760px;
 $container-narrow-width: 600px;
 $logo-width: 28px;
+$logo-height: math.div($logo-width * 38.1, 26.2);
 // The covers menu's covers, a little bigger than the logo, to be easier to make out and to tap
 $covers-nav-size: 36px;
 // Wide enough for the gutter either side of the column to fit a cover with the page's 20px margin both sides of it
