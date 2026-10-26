@@ -1,5 +1,5 @@
 // The covers menu. Where there's room beside the reading column, it's a column under the logo, in line with it,
-// that stays in view as the page scrolls, each cover's title showing beside it on hover or focus.
+// that stays in view under the logo as the page scrolls, each cover's title showing beside it on hover or focus.
 // Where there isn't, it's a row under the header that scrolls sideways, the titles left to screen readers.
 // The covers sit over the reading column's area rather than beside it, so the column stays centred on the page.
 $covers-nav-gap: 12px;
@@ -105,7 +105,8 @@ $covers-nav-gap: 12px;
 
   .covers-nav {
     position: sticky;
-    top: 20px;
+    // Under the logo, which stays in place above it
+    top: 20px + $logo-height + 20px;
     z-index: 1;
     align-self: start;
     justify-self: start;

@@ -51,18 +51,37 @@ header {
     outline-offset: 2px;
   }
 
-  // Block, so the icon centres in the button instead of sitting on a text baseline
+  // Block, so the icon centres in the button instead of sitting on a text baseline.
+  // The sun and moon take the theme's foreground colour, like the logo.
   svg {
     display: block;
+    fill: var(--fg);
   }
 }
 
-.theme-toggle__sun {
-  fill: $orange;
-}
+// Where there's room beside the reading column, the logo stays in the top left corner as the page scrolls,
+// the covers menu under it, and the theme toggle in the bottom left corner. The header keeps the logo's height,
+// so the date stays centred on where the logo starts and the covers start under it.
+@media (min-width: $covers-nav-beside) {
+  .site-header > div {
+    justify-content: flex-end;
+    min-height: $logo-height;
+  }
 
-.theme-toggle__moon {
-  fill: var(--purple);
+  .logo-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+  }
+
+  // Set in by the button's padding around the icon, so the icon lines up with the logo and covers above it
+  .theme-toggle {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 2;
+  }
 }
 
 // Trimmed to cap height and baseline, so the visible text centres on the toggle
