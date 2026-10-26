@@ -3,7 +3,7 @@ type: design
 title: Modelling a real estate portfolio people can actually maintain
 navTitle: "Real Estate Model"
 date: 2026-04-14
-thumbnail: './cover.svg'
+thumbnail: "./cover.svg"
 summary: Editing a five-level portfolio, with forms that block bad data
 role: Principal Designer. I led the UX, built most of the front end, and contributed to the API and its validation rules.
 period: 2026

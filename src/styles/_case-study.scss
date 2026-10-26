@@ -309,6 +309,13 @@ $flow-dot: 20px;
   }
 }
 
+// For a row of three numbers
+.stats--three {
+  @media (min-width: $mq-tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 // A small diagram drawn in HTML, so its labels wrap on a phone and it takes the theme's colours in both modes
 .diagram {
   margin: 30px 0;
