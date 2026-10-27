@@ -16,6 +16,8 @@ $covers-nav-size: 36px;
 $covers-nav-beside: $container-width + 2 * ($covers-nav-size + 40px);
 // How far media that bleeds out of the column stays in from the page's margins to clear the covers beside it
 $bleed-covers-inset: $covers-nav-size + 20px;
+// The widest a medium bleed gets: room for detail the column is too narrow for, without spanning a wide screen
+$bleed-medium-width: 1100px;
 
 // Colors
 $white: #FFFFFF;

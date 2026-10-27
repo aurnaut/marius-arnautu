@@ -1,24 +1,22 @@
 ---
 type: design
-title: "Branding, 2012 – 2023: identities, menus and a rebrand"
+title: "Branding & identities"
 navTitle: "Branding & Identities"
 date: 2023-07-01
 thumbnail: './cover.svg'
-summary: Logos, menus, a festival identity, agency pitches and Evora's rebrand
-role: Brand designer, and front-end developer for the Evora rebrand.
-period: 2012 – 2023
-tools: Adobe Illustrator, Adobe Photoshop, CorelDRAW, Sass, Storybook
+summary: Logos, a festival identity and a hand-lettered wordmark
+role: Brand designer and illustrator.
+period: 2012 – present
+tools: Adobe Illustrator, Adobe Photoshop, Figma
 ---
 
 ## Context
 
-Before product design, most of my work was identity design for small businesses, start-ups and cultural projects. This post collects it:
+I've designed identities for small businesses, start-ups and cultural projects since 2012. This post collects them:
 
 - **Horn of Plenty**, a festival identity with a custom typeface
-- **My Soul**, a logo and menus for a bar and restaurant
-- **Creare**, two rebrand directions for a digital agency
-- **Selected identities**, logos for film, food, technology and places
-- **Evora**, rolling a new brand out across a live product
+- **Haitucova**, a hand-lettered wordmark
+- **Selected identities**, a sheet of logos from 2012 on
 
 ## Horn of Plenty: a mountain food and wine festival
 
@@ -26,15 +24,54 @@ Before product design, most of my work was identity design for small businesses,
 
 A three-day food and wine festival in Breb, a Maramureș village known for its wooden gates and crafts. The identity is rooted in the place and its produce, not generic festival branding.
 
-<!-- TODO (Marius): was this a client project, a competition or a self-initiated concept? Name the client if you can, and say whether the festival used the identity. -->
 
-![Horn of Plenty logo: a cornucopia of grapes and produce in an orange roundel above the wordmark](./horn-of-plenty/logo.jpg)
+![Horn of Plenty logo: a cornucopia of grapes and produce in an orange roundel above the wordmark](./horn-of-plenty/logo.png)
 
 The mark is a cornucopia in a single line and one colour, so it can be printed, stamped, embroidered or burned into wood without redrawing.
 
-![The custom Horn of Plenty alphabet shown in the identity's colours](./horn-of-plenty/custom-font.jpg)
+<div class="keyboard" role="group" aria-label="The custom Horn of Plenty lowercase alphabet as a keyboard. Press a key, or type, to see the letter large" data-glyphs="/projects/branding/horn-of-plenty/keys">
+  <div class="keyboard__row">
+    <button type="button" class="keyboard__key" data-key="q" aria-label="q" style="--glyph: url(/projects/branding/horn-of-plenty/keys/q.png)"></button>
+    <button type="button" class="keyboard__key" data-key="w" aria-label="w" style="--glyph: url(/projects/branding/horn-of-plenty/keys/w.png)"></button>
+    <button type="button" class="keyboard__key" data-key="e" aria-label="e" style="--glyph: url(/projects/branding/horn-of-plenty/keys/e.png)"></button>
+    <button type="button" class="keyboard__key" data-key="r" aria-label="r" style="--glyph: url(/projects/branding/horn-of-plenty/keys/r.png)"></button>
+    <button type="button" class="keyboard__key" data-key="t" aria-label="t" style="--glyph: url(/projects/branding/horn-of-plenty/keys/t.png)"></button>
+    <button type="button" class="keyboard__key" data-key="y" aria-label="y" style="--glyph: url(/projects/branding/horn-of-plenty/keys/y.png)"></button>
+    <button type="button" class="keyboard__key" data-key="u" aria-label="u" style="--glyph: url(/projects/branding/horn-of-plenty/keys/u.png)"></button>
+    <button type="button" class="keyboard__key" data-key="i" aria-label="i" style="--glyph: url(/projects/branding/horn-of-plenty/keys/i.png)"></button>
+    <button type="button" class="keyboard__key" data-key="o" aria-label="o" style="--glyph: url(/projects/branding/horn-of-plenty/keys/o.png)"></button>
+    <button type="button" class="keyboard__key" data-key="p" aria-label="p" style="--glyph: url(/projects/branding/horn-of-plenty/keys/p.png)"></button>
+  </div>
+  <div class="keyboard__row keyboard__row--home">
+    <button type="button" class="keyboard__key" data-key="a" aria-label="a" style="--glyph: url(/projects/branding/horn-of-plenty/keys/a.png)"></button>
+    <button type="button" class="keyboard__key" data-key="s" aria-label="s" style="--glyph: url(/projects/branding/horn-of-plenty/keys/s.png)"></button>
+    <button type="button" class="keyboard__key" data-key="d" aria-label="d" style="--glyph: url(/projects/branding/horn-of-plenty/keys/d.png)"></button>
+    <button type="button" class="keyboard__key" data-key="f" aria-label="f" style="--glyph: url(/projects/branding/horn-of-plenty/keys/f.png)"></button>
+    <button type="button" class="keyboard__key" data-key="g" aria-label="g" style="--glyph: url(/projects/branding/horn-of-plenty/keys/g.png)"></button>
+    <button type="button" class="keyboard__key" data-key="h" aria-label="h" style="--glyph: url(/projects/branding/horn-of-plenty/keys/h.png)"></button>
+    <button type="button" class="keyboard__key" data-key="j" aria-label="j" style="--glyph: url(/projects/branding/horn-of-plenty/keys/j.png)"></button>
+    <button type="button" class="keyboard__key" data-key="k" aria-label="k" style="--glyph: url(/projects/branding/horn-of-plenty/keys/k.png)"></button>
+    <button type="button" class="keyboard__key" data-key="l" aria-label="l" style="--glyph: url(/projects/branding/horn-of-plenty/keys/l.png)"></button>
+  </div>
+  <div class="keyboard__row keyboard__row--bottom">
+    <button type="button" class="keyboard__key" data-key="z" aria-label="z" style="--glyph: url(/projects/branding/horn-of-plenty/keys/z.png)"></button>
+    <button type="button" class="keyboard__key" data-key="x" aria-label="x" style="--glyph: url(/projects/branding/horn-of-plenty/keys/x.png)"></button>
+    <button type="button" class="keyboard__key" data-key="c" aria-label="c" style="--glyph: url(/projects/branding/horn-of-plenty/keys/c.png)"></button>
+    <button type="button" class="keyboard__key" data-key="v" aria-label="v" style="--glyph: url(/projects/branding/horn-of-plenty/keys/v.png)"></button>
+    <button type="button" class="keyboard__key" data-key="b" aria-label="b" style="--glyph: url(/projects/branding/horn-of-plenty/keys/b.png)"></button>
+    <button type="button" class="keyboard__key" data-key="n" aria-label="n" style="--glyph: url(/projects/branding/horn-of-plenty/keys/n.png)"></button>
+    <button type="button" class="keyboard__key" data-key="m" aria-label="m" style="--glyph: url(/projects/branding/horn-of-plenty/keys/m.png)"></button>
+  </div>
+</div>
 
-A custom alphabet, like lettering on a hand-painted village sign, and a harvest palette: pumpkin, vine green, wine red and old-wood brown.
+A custom alphabet, like lettering on a hand-painted village sign, and a harvest palette: pumpkin, vine green and old-wood brown on a cream ground.
+
+<ul class="swatches" aria-label="The Horn of Plenty palette">
+  <li class="swatches__item"><span class="swatches__chip" style="--swatch: #e79333"></span>Pumpkin</li>
+  <li class="swatches__item"><span class="swatches__chip" style="--swatch: #6d8110"></span>Vine green</li>
+  <li class="swatches__item"><span class="swatches__chip" style="--swatch: #523819"></span>Old-wood brown</li>
+  <li class="swatches__item"><span class="swatches__chip" style="--swatch: #f6eddc"></span>Cream</li>
+</ul>
 
 <div class="callout">
 
@@ -46,236 +83,71 @@ A custom alphabet, like lettering on a hand-painted village sign, and a harvest 
 
 ![The printed ticket with a ticket number, date and a barcode](./horn-of-plenty/ticket.jpg)
 
+<div class="shots__stack">
+
 ![The ticket shown on a phone](./horn-of-plenty/ticket-phone-mockup.jpg)
-
-</div>
-
-<div class="shots">
-
-![Festival poster: line-drawn produce over a photo of the Maramureș hills](./horn-of-plenty/advertisment.jpg)
-
-![The poster in a bus stop](./horn-of-plenty/advertisment-bus-stop-mockup.jpg)
-
-</div>
-
-![The festival entrance: a carved wooden Maramureș gate carrying the Horn of Plenty sign and roundel](./horn-of-plenty/entrance.jpg)
-
-<div class="shots">
-
-![An orange apron patterned with produce drawings and the logo](./horn-of-plenty/apron-mockup.jpg)
 
 ![Two plates: one with a large cornucopia illustration and one with the wordmark](./horn-of-plenty/plate-mockup.jpg)
 
 </div>
 
-## My Soul: a logo and menus for a bar and restaurant
+</div>
 
-*2013 · Brand designer. I designed the logo proposals, the final wordmark and the menus.*
+![An orange apron patterned with produce drawings and the logo](./horn-of-plenty/apron-mockup.jpg)
 
-<!-- TODO (Marius): where the restaurant was, whether it was a client project, and whether the menus went to print. -->
+## Haitucova: a hand-lettered wordmark
 
-![Five logo proposals: a blocky stacked MY SO UL, a brush-script "my soul", and three framed serif MYSOUL wordmarks](./my-soul/logo-proposals.jpg)
+*2013 · Brand designer. I lettered the wordmark and drew it up as a vector.*
 
-![The MYSOUL wordmark inside a double frame, with a cocktail glass drawn into the Y](./my-soul/logo.jpg)
 
-In the framed serif direction, the **Y in "MY" doubles as a cocktail glass**.
+![The Haitucova wordmark: hand-lettered in a single red line, with one long stroke sweeping up through the H and over the rest of the word](./haitucova/logo.png)
 
-<!-- TODO (Marius): confirm this was the direction the client chose. -->
+One long stroke rises through the **H**, crosses the **t** and arcs over the rest of the word, so the name reads as a single gesture.
 
 <div class="shots">
 
-![Food menu cover: a large faint bowl behind "MENU", with a small bowl icon above the logo](./my-soul/food-menu-cover.jpg)
+![A phone showing the white wordmark on a red screen](./haitucova/phone.jpg)
 
-![Wine list cover: a large faint wine glass behind "MENU", with a small glass icon above the logo](./my-soul/wine-menu-cover.jpg)
-
-</div>
-
-<div class="callout">
-
-**One template, one changing icon.** Guests hold both menus at once, so they should read as a set. Swapping a bowl for a wine glass tells them apart at a glance.
+![The wordmark in white on red](./haitucova/red.jpg)
 
 </div>
 
-<div class="shots">
-
-![Food menu cover variation on white with a large steaming bowl](./my-soul/food-menu-cover-alt.jpg)
-
-![Wine list cover variation on grey with the stacked MY SO UL logo in navy](./my-soul/wine-menu-cover-alt.jpg)
-
-</div>
-
-![Inside page: a grey header band with the bowl icon, then dishes with their prices and descriptions in italics](./my-soul/food-menu-page.jpg)
-
-Inside, a plain list with no columns or dotted leaders, easy to read in dim light.
-
-## Creare: two directions for a digital agency's rebrand
-
-*2012 – 2014 · Web designer at Creare. I designed the identity proposals and their applications.*
-
-Creare is a web design and digital marketing agency in Rugby, where I worked as a web designer.
-
-<!-- TODO (Marius): confirm the dates and whether this was an internal pitch, a competition or the adopted brand. If one direction was chosen, say which. -->
-
-![A sheet of Creare logo explorations: stacked "Cre / are" lockups, C monograms in single and multiple colours, and spaced-out "creare" wordmarks](./creare/exploration-proposals.jpg)
-
-<div class="shots">
-
-![C monograms in six colours, with play-button and diamond variations](./creare/exploration-logos.jpg)
-
-![CREARE set as a column of letter tiles, crossing words for the agency's services: SEO, web design, content, video, illustration](./creare/exploration-services.jpg)
-
-</div>
-
-![The five-colour palette (charcoal, blue, green, yellow and orange) with the stacked serif wordmark in each colour](./creare/stacked-wordmark-colours.jpg)
-
-Both directions share a five-colour palette where any accent can lead, so the brand can change colour and still read as one.
-
-### Direction one: Cre / are
-
-![Business cards: the blue reverse shows "are" and the white front shows "Cre" in large serif type](./creare/business-cards.jpg)
-
-*Creare* means "to create" in Romanian and Italian. **Cre / are** is split across the business card, so the name is only complete when you turn it over.
-
-<div class="shots">
-
-![The stacked wordmark on a phone screen with the agency's address](./creare/phone-mockup.jpg)
-
-![The wrapped "CREARE" gift box](./creare/packaging.jpg)
-
-</div>
-
-### Direction two: creare, with an accent
-
-![The rounded sans wordmark with a coloured accent over the final e, in each palette colour](./creare/wordmark-variations.jpg)
-
-A rounded lowercase sans whose final **e** carries an accent in the palette colours, plus a **C icon** for app tiles.
-
-![App icons: a "C" inside a rounded tile in orange, yellow and green, plain and with an ornamental border](./creare/icon-variations.jpg)
-
-<div class="shots">
-
-![The C icon on iPhone home screens in dark and light](./creare/app-icon.jpg)
-
-![The sans wordmark on a laptop screen](./creare/laptop-mockup.jpg)
-
-</div>
-
-<!-- TODO (Marius): outcome. Which direction did the team choose, and where was it rolled out? -->
+![The wordmark rendered as a polished metal sign on a dark surface](./haitucova/metal-render.jpg)
 
 ## Selected identities
 
-*2012 – 2023 · Brand designer.*
+*2012 – present · Brand designer.*
 
-<!-- TODO (Marius): add a line per logo with the client, what they do, the year and whether the logo was adopted. The descriptions below only cover the marks themselves. -->
-
-### Exploring a name: Giftstar
-
-![Giftstar logo proposals: a geometric star-and-ribbon mark in outline, filled and reversed, across three colour and type options](./identities/giftstar-proposals.jpg)
-
-Two routes from the name: a star built from ribbon, and the words stacked into a wrapped present.
-
-![The hand-lettered Giftstar mark: "gift star" lettering stacked into the shape of a wrapped present with a bow](./identities/giftstar-lettered.jpg)
-
-### Film and culture
-
-<div class="shots">
-
-![Ramura Film: a branching tree mark above the wordmark, in colour, grey and reversed on a dark brown card](./identities/ramura-film.jpg)
-
-![UNATC identity sheet: the film-strip mark at several sizes, horizontal and stacked lockups, and the typeface](./identities/unatc-guide.jpg)
-
+<div class="bleed bleed--medium">
+<ul class="logo-wall" aria-label="25 logos">
+  <li class="logo-wall__item"><img src="/projects/branding/logos/alex.svg" alt="Alex" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/bicla.svg" alt="bicla.ro" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/sushilove.svg" alt="Sushilove" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/hollins.svg" alt="Hollins Finn" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/ramura.svg" alt="Ramura Film" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/play.svg" alt="A play-button mark" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/iwb.svg" alt="iwb, internetwrittenbook" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/dopamine.svg" alt="Dopamine" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/newused.svg" alt="Newused" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/creare.svg" alt="Creare" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/ahd.svg" alt="AHD" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/deadfox.svg" alt="Deadfox" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/brushc.svg" alt="A brushed C" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/giurgiulmeu.svg" alt="Giurgiulmeu" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/haitucova.svg" alt="Haitucova" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/happykid.svg" alt="Happykid" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/marn.svg" alt="marn" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/skatee.svg" alt="Skatee" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/sure.svg" alt="Sure" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/widehair.svg" alt="Widehair" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/giftstar.svg" alt="Giftstar" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/wavers.svg" alt="Wavers" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/minim.svg" alt="MINIM" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/save.svg" alt="Save" loading="lazy"></li>
+  <li class="logo-wall__item"><img src="/projects/branding/logos/swanssword.svg" alt="Swanssword" loading="lazy"></li>
+</ul>
 </div>
-
-- **Ramura Film:** *ramura* means "branch" in Romanian, so the mark is a tree in full branch.
-- **UNATC** (Bucharest's national university of theatre and film): a film strip folding into an arch.
-
-### Food
-
-<div class="shots">
-
-![Sushilove: a heart on a rice ball wrapped in nori, beside the SUSHILOVE wordmark](./identities/sushilove.jpg)
-
-![Happykid: a minimal smiling face above the HAPPYKID wordmark, reversed on black](./identities/happykid.jpg)
-
-</div>
-
-- **Sushilove:** reads as both a piece of sushi and a love heart.
-- **Happykid:** a smiling face in a few thin lines.
-
-### Technology and services
-
-<div class="shots">
-
-![Netconfig: the lowercase wordmark with a mouse cursor in place of the dot on the i](./identities/netconfig.jpg)
-
-![Ticketed: a bold sans wordmark where the T is cut from a ticket stub, in four colourways](./identities/ticketed.jpg)
-
-</div>
-
-<div class="shots">
-
-![Trifold: a lowercase spaced wordmark beside a folded paper-plane mark in red outline](./identities/trifold.jpg)
-
-![Wavers: three wave lines above the white wordmark on teal](./identities/wavers.jpg)
-
-</div>
-
-- **Netconfig:** a cursor clicks the dot on the "i".
-- **Ticketed:** the "T" is a ticket stub, notched where you'd tear it.
-- **Trifold:** a paper plane folded from triangles.
-- **Wavers:** stacked wave lines.
-
-### Places and property
-
-<div class="shots">
-
-![Giurgiulmeu: a wordmark with a stylised clock tower in a circle, on white and reversed on navy](./identities/giurgiulmeu.jpg)
-
-![GPS, Grup Producători Siretu: a wheat-ear icon in eight colours above the GPS wordmark](./identities/gps-siretu.jpg)
-
-</div>
-
-<div class="shots">
-
-![Indigo Proiecte Case: house roofline marks above the INDIGO wordmark, in navy, outline and reversed](./identities/indigo.jpg)
-
-![Romb Architecture: a yellow diamond in place of the o in "romb", above ARCHITECTURE](./identities/romb.jpg)
-
-</div>
-
-- **Giurgiulmeu** ("my Giurgiu"): the town's clock tower.
-- **GPS** (Grup Producători Siretu), a producers' group: an ear of wheat.
-- **Indigo Proiecte Case** ("house projects"): rooflines, plus a matching icon set for property details.
-- **Romb Architecture:** *romb* means "rhombus", so the "o" becomes a diamond.
-
-### Personal
-
-![The marn mark: a fluid brush-script wordmark in black and reversed](./identities/marn.jpg)
-
-**marn** is my own mark.
-
-## Evora: rolling a rebrand out across a live product
-
-*2023 · Principal Designer at Evora Global. I led the front-end side of the rebrand in [SIERA](/projects/siera-esg-analytics/).*
-
-Evora's 2023 rebrand brought a new palette (deep ocean, forest, foliage, nature and sand). SIERA, its ESG platform, had colours hard-coded across the codebase.
-
-<ol class="flow">
-  <li><strong>Centralise</strong>Moved every colour into one Sass variables file, exported to JavaScript for charts.</li>
-  <li><strong>Map</strong>Mapped each legacy colour onto the new palette, deciding where it carried meaning and where it was decoration.</li>
-  <li><strong>Replace</strong>Replaced hard-coded hex and RGB values with variables and recoloured the SVG icons.</li>
-  <li><strong>Protect</strong>Added an SVG-sprite Icon component and Storybook atoms, so new work used the system by default.</li>
-</ol>
-
-<div class="stats">
-  <div><strong>&lt;3 weeks</strong><span>from the first rebrand commit to the last (June–July 2023)</span></div>
-  <div><strong>256</strong><span>files updated across 34 commits</span></div>
-  <div><strong>98%</strong><span>of hard-coded colours removed, from 247 lines to 5</span></div>
-  <div><strong>1</strong><span>source of truth for colour, shared by Sass and JavaScript</span></div>
-</div>
-
-The palette was later carried into the new platform's [design system](/projects/design-system/).
 
 ## What I learned
 
-Many of these names already held an image: a branch, a ticket, a rhombus. The job was often to find it and take everything else away.
+Every mark here had to survive everywhere it went. The Horn of Plenty cornucopia had to print, stamp, embroider and burn into wood without redrawing, and each logo had to read as clearly on a phone screen as on a sign. That meant finding the one idea that carries a brand and cutting everything else. It's how I still work, on brands and products alike.

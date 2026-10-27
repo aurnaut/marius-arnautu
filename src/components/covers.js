@@ -25,8 +25,9 @@ export const covers = {
   '/projects/siera-esg-analytics/': { Cover: SieraEsgAnalyticsCover },
   '/projects/branding/': { Cover: BrandingCover, cycle: 5500 },
   '/projects/arnautus-library/': { Cover: ArnautusLibraryCover, cycle: 3500 },
-  '/projects/sneakerz/': { Cover: SneakerzCover },
   '/projects/tedx-coventry/': { Cover: TedxCoventryCover },
+  // Not a post's: the sneaker from an old landing page project, running on its track on the page-not-found page
+  '/404/': { Cover: SneakerzCover },
 };
 
 // Blown up, the covers' shapes cover more ground in the same time, so the hero plays them this many times slower

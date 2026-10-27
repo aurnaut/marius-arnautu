@@ -1,6 +1,6 @@
 ---
 type: [design, development]
-title: "Arnautu's Library: a catalogue for a home bookshelf"
+title: "Home Library: a catalogue for a home bookshelf"
 navTitle: "Home Library"
 date: 2021-04-01
 thumbnail: './cover.svg'

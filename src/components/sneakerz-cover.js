@@ -3,7 +3,7 @@ import React from "react";
 // Inline copy of projects/sneakerz/cover.svg, so hovering the post title can turn the laces into a running track:
 // they run on down to the foot of the upper, so the strips between them are lanes, which turn track red,
 // and a chequered finish line runs down the lanes again and again.
-// Each lace is drawn the whole way down, with pathLength 1, and dashed to show only the part the drawing has,
+// Each lace is drawn the whole way down, and a little past the foot, so the upper's edge cuts it off flat, with pathLength 1, and dashed to show only the part the drawing has,
 // so it can lengthen to the whole of it, one after another (--delay). The laces all slant the same way, 22.5deg off upright.
 // The lanes' red runs from the first lace to the last, cut by the laces so they show through it, and clipped to the upper.
 // The finish line is two rows of squares across the whole track, square on to the lanes, from the outside edge
@@ -12,10 +12,10 @@ import React from "react";
 const upper = 'M80 410V245L530 355V410Z';
 
 const laces = [
-  { d: 'M250 280.6L196.5 410', shown: 0.583 },
-  { d: 'M290 290.3L240.4 410', shown: 0.549 },
-  { d: 'M330 300.1L284.6 410', shown: 0.509 },
-  { d: 'M370 309.9L328.5 410', shown: 0.461 },
+  { d: 'M250 280.6L194.8 414', shown: 0.565 },
+  { d: 'M290 290.3L238.7 414', shown: 0.531 },
+  { d: 'M330 300.1L282.9 414', shown: 0.491 },
+  { d: 'M370 309.9L326.8 414', shown: 0.443 },
 ];
 
 // The first and last laces are 132 apart across the upper, so square on to the lanes their centres are 122 apart,

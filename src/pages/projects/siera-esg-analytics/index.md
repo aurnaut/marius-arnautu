@@ -1,6 +1,6 @@
 ---
 type: design
-title: "SIERA: showing fund managers what their ESG numbers are made of"
+title: "SIERA: what ESG numbers are made of"
 navTitle: "ESG Analytics"
 date: 2024-04-29
 thumbnail: './cover.svg'
@@ -280,6 +280,6 @@ Once these versions launched, clients went past the asset list, opening their as
 
 ## Rebranding a live product
 
-In 2023 I also led the front-end side of Evora's rebrand in SIERA, moving every hard-coded colour into one source of truth in under three weeks. That work is written up with my other [branding](/projects/branding/) projects.
+In 2023 I also led the front-end side of Evora's rebrand in SIERA, moving every hard-coded colour into one source of truth in under three weeks.
 
 Working in a large, long-lived codebase taught me small reviewable steps and systems before screens, which shaped the [design system](/projects/design-system/) for the new platform.
