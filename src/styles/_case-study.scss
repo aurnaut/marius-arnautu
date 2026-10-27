@@ -431,6 +431,56 @@ $flow-dot: 20px;
   }
 }
 
+// A photo with a label pointing at someone in it. The label's tip sits at --x, --y, as a share of the photo.
+.tagged {
+  position: relative;
+  margin: 30px 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+.tagged__marker {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, calc(-100% - 10px));
+  // Centred by flexbox rather than padding, which leaves the text sitting high or low depending on the font
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 28px;
+  // The font's glyphs sit high in their line box
+  padding: 4px 12px 0;
+  border: 2px solid #e62b1e;
+  border-radius: 14px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+
+  // The tail: a square turned on its corner, outlined on its lower two sides, its fill covering the bubble's
+  // own line where they meet
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    margin-top: 1px;
+    border-right: 2px solid #e62b1e;
+    border-bottom: 2px solid #e62b1e;
+    background: #000;
+  }
+}
+
 // Placeholder for a screenshot that hasn't been added yet
 .shots {
   display: grid;

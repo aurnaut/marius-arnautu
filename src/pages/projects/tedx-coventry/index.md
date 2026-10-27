@@ -64,6 +64,20 @@ The same look carried onto paper: the programme and the lanyards. On the day, ei
 
 ![The host on stage at the Belgrade Theatre, microphone in hand, in front of the REBOOTED theme on the big screen](./event-stage.jpg)
 
-![The organising team applauding on stage, in TEDxCoventry t-shirts and the event lanyards](./event-team.jpg)
+<div class="tagged only-wide">
 
-*Some of the organising team on the day. That's me, second from the right. Photos: ES Media.*
+![The organising team posing on stage around the red TEDx carpet, in TEDxCoventry t-shirts and the event lanyards, with the REBOOTED screen behind](./event-team.jpg)
+
+<span class="tagged__marker" style="--x: 69%; --y: 28%">Me</span>
+
+</div>
+
+<div class="tagged only-narrow">
+
+![The organising team posing on stage around the red TEDx carpet, in TEDxCoventry t-shirts and the event lanyards, with the REBOOTED screen behind](./event-team-narrow.jpg)
+
+<span class="tagged__marker" style="--x: 71%; --y: 18.5%">Me</span>
+
+</div>
+
+*Organising team on the day.*
