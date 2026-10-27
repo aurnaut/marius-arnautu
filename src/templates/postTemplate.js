@@ -8,10 +8,19 @@ import { CoverHero } from '../components/covers';
 
 // gatsby-remark-images sizes every image for the reading column, so images that bleed out of it to the
 // page's margins would load a file too small for them. Their sizes are the page's width instead.
-const sizeBleedImages = (html) =>
-  html.replace(/<div class="bleed[^"]*">[\s\S]*?<\/div>/g, (block) =>
-    block.replace(/sizes="[^"]*"/g, 'sizes="100vw"'),
-  );
+// The divs are counted, as a bleed block can nest others, such as one image for each theme.
+const sizeBleedImages = (html) => {
+  let depth = 0; // How many divs deep inside a bleed block, 0 outside one
+  return html.replace(/<div\b[^>]*>|<\/div>|sizes="[^"]*"/g, (tag) => {
+    if (tag.startsWith('sizes')) return depth ? 'sizes="100vw"' : tag;
+    if (tag === '</div>') {
+      if (depth) depth -= 1;
+    } else if (depth || /class="bleed[\s"]/.test(tag)) {
+      depth += 1;
+    }
+    return tag;
+  });
+};
 
 const PostTemplate = ({ data, pageContext }) => {
   const { frontmatter, html } = data.markdownRemark;
