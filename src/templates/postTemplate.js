@@ -145,12 +145,12 @@ const blinkHappykid = (svg) => {
   const onLeave = () => {
     hovered = false;
   };
-  item.addEventListener('pointerenter', onEnter);
-  item.addEventListener('pointerleave', onLeave);
+  item.addEventListener('logo-play', onEnter);
+  item.addEventListener('logo-stop', onLeave);
   return () => {
     cancelAnimationFrame(frame);
-    item.removeEventListener('pointerenter', onEnter);
-    item.removeEventListener('pointerleave', onLeave);
+    item.removeEventListener('logo-play', onEnter);
+    item.removeEventListener('logo-stop', onLeave);
   };
 };
 
@@ -204,10 +204,10 @@ const springHollins = (svg) => {
     svg.style.overflow = 'visible';
     frame = requestAnimationFrame(draw);
   };
-  item.addEventListener('pointerenter', onEnter);
+  item.addEventListener('logo-play', onEnter);
   return () => {
     cancelAnimationFrame(frame);
-    item.removeEventListener('pointerenter', onEnter);
+    item.removeEventListener('logo-play', onEnter);
   };
 };
 
@@ -278,10 +278,10 @@ const twistBrushc = (svg) => {
     svg.style.overflow = 'visible';
     frame = requestAnimationFrame(draw);
   };
-  item.addEventListener('pointerenter', onEnter);
+  item.addEventListener('logo-play', onEnter);
   return () => {
     cancelAnimationFrame(frame);
-    item.removeEventListener('pointerenter', onEnter);
+    item.removeEventListener('logo-play', onEnter);
   };
 };
 
@@ -417,10 +417,10 @@ const zoomGiurgiu = (svg) => {
     tower.after(ring, view);
     frame = requestAnimationFrame(draw);
   };
-  item.addEventListener('pointerenter', onEnter);
+  item.addEventListener('logo-play', onEnter);
   return () => {
     cancelAnimationFrame(frame);
-    item.removeEventListener('pointerenter', onEnter);
+    item.removeEventListener('logo-play', onEnter);
   };
 };
 
@@ -493,12 +493,12 @@ const smileSure = (svg) => {
   const onLeave = () => {
     hovered = false;
   };
-  item.addEventListener('pointerenter', onEnter);
-  item.addEventListener('pointerleave', onLeave);
+  item.addEventListener('logo-play', onEnter);
+  item.addEventListener('logo-stop', onLeave);
   return () => {
     cancelAnimationFrame(frame);
-    item.removeEventListener('pointerenter', onEnter);
-    item.removeEventListener('pointerleave', onLeave);
+    item.removeEventListener('logo-play', onEnter);
+    item.removeEventListener('logo-stop', onLeave);
   };
 };
 
@@ -556,10 +556,10 @@ const spinMinim = (svg) => {
     start = performance.now();
     frame = requestAnimationFrame(draw);
   };
-  item.addEventListener('pointerenter', onEnter);
+  item.addEventListener('logo-play', onEnter);
   return () => {
     cancelAnimationFrame(frame);
-    item.removeEventListener('pointerenter', onEnter);
+    item.removeEventListener('logo-play', onEnter);
   };
 };
 
@@ -682,12 +682,12 @@ const tickSave = (svg) => {
   const onLeave = () => {
     hovered = false;
   };
-  item.addEventListener('pointerenter', onEnter);
-  item.addEventListener('pointerleave', onLeave);
+  item.addEventListener('logo-play', onEnter);
+  item.addEventListener('logo-stop', onLeave);
   return () => {
     cancelAnimationFrame(frame);
-    item.removeEventListener('pointerenter', onEnter);
-    item.removeEventListener('pointerleave', onLeave);
+    item.removeEventListener('logo-play', onEnter);
+    item.removeEventListener('logo-stop', onLeave);
   };
 };
 
@@ -741,13 +741,66 @@ const tieWidehair = (svg) => {
     hovered = false;
     left = performance.now();
   };
-  item.addEventListener('pointerenter', onEnter);
-  item.addEventListener('pointerleave', onLeave);
+  item.addEventListener('logo-play', onEnter);
+  item.addEventListener('logo-stop', onLeave);
   return () => {
     cancelAnimationFrame(frame);
-    item.removeEventListener('pointerenter', onEnter);
-    item.removeEventListener('pointerleave', onLeave);
+    item.removeEventListener('logo-play', onEnter);
+    item.removeEventListener('logo-stop', onLeave);
   };
+};
+
+// A logo plays while the mouse is over it, and for a few seconds when it's tapped, as a touch screen has no hover.
+// Tapping it again while it plays stops it. Playing marks the item is-playing for the CSS animations and sends it
+// logo-play and logo-stop events for the scripted ones. Returns a function that removes the listeners.
+const playLogos = (body) => {
+  const tapped = 3000; // Milliseconds a tapped logo plays for
+  const removers = [...body.querySelectorAll('.logo-wall__item')].map((item) => {
+    let timer = null;
+    let touch = false;
+    const play = () => {
+      clearTimeout(timer);
+      if (item.classList.contains('is-playing')) return;
+      item.classList.add('is-playing');
+      item.dispatchEvent(new Event('logo-play'));
+    };
+    const stop = () => {
+      clearTimeout(timer);
+      if (!item.classList.contains('is-playing')) return;
+      item.classList.remove('is-playing');
+      item.dispatchEvent(new Event('logo-stop'));
+    };
+    const onEnter = (event) => {
+      if (event.pointerType === 'mouse') play();
+    };
+    const onLeave = (event) => {
+      if (event.pointerType === 'mouse') stop();
+    };
+    const onDown = (event) => {
+      touch = event.pointerType !== 'mouse';
+    };
+    const onClick = () => {
+      if (!touch) return;
+      if (item.classList.contains('is-playing')) {
+        stop();
+        return;
+      }
+      play();
+      timer = setTimeout(stop, tapped);
+    };
+    item.addEventListener('pointerenter', onEnter);
+    item.addEventListener('pointerleave', onLeave);
+    item.addEventListener('pointerdown', onDown);
+    item.addEventListener('click', onClick);
+    return () => {
+      clearTimeout(timer);
+      item.removeEventListener('pointerenter', onEnter);
+      item.removeEventListener('pointerleave', onLeave);
+      item.removeEventListener('pointerdown', onDown);
+      item.removeEventListener('click', onClick);
+    };
+  });
+  return () => removers.forEach((remove) => remove());
 };
 
 // Logo walls list each logo as an image, so they show without JavaScript. SVGs are swapped for their markup,
@@ -785,6 +838,7 @@ const PostTemplate = ({ data, pageContext }) => {
   const bodyRef = useRef(null);
   useEffect(() => playKeyboards(bodyRef.current), [html]);
   useEffect(() => inlineLogos(bodyRef.current), [html]);
+  useEffect(() => playLogos(bodyRef.current), [html]);
   // When it was is shown with its types, as on the post lists
   const meta = [
     ['Role', frontmatter.role],

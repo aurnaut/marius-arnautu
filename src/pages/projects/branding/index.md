@@ -12,7 +12,7 @@ tools: Adobe Illustrator, Adobe Photoshop, Figma
 
 ## Context
 
-Before product design, most of my work was identity design for small businesses, start-ups and cultural projects. This post collects it:
+I've designed identities for small businesses, start-ups and cultural projects since 2012. This post collects them:
 
 - **Horn of Plenty**, a festival identity with a custom typeface
 - **Haitucova**, a hand-lettered wordmark
@@ -24,7 +24,6 @@ Before product design, most of my work was identity design for small businesses,
 
 A three-day food and wine festival in Breb, a Maramureș village known for its wooden gates and crafts. The identity is rooted in the place and its produce, not generic festival branding.
 
-<!-- TODO (Marius): was this a client project, a competition or a self-initiated concept? Name the client if you can, and say whether the festival used the identity. -->
 
 ![Horn of Plenty logo: a cornucopia of grapes and produce in an orange roundel above the wordmark](./horn-of-plenty/logo.png)
 
@@ -65,7 +64,14 @@ The mark is a cornucopia in a single line and one colour, so it can be printed, 
   </div>
 </div>
 
-A custom alphabet, like lettering on a hand-painted village sign, and a harvest palette: pumpkin, vine green, wine red and old-wood brown.
+A custom alphabet, like lettering on a hand-painted village sign, and a harvest palette: pumpkin, vine green and old-wood brown on a cream ground.
+
+<ul class="swatches" aria-label="The Horn of Plenty palette">
+  <li class="swatches__item"><span class="swatches__chip" style="--swatch: #e79333"></span>Pumpkin</li>
+  <li class="swatches__item"><span class="swatches__chip" style="--swatch: #6d8110"></span>Vine green</li>
+  <li class="swatches__item"><span class="swatches__chip" style="--swatch: #523819"></span>Old-wood brown</li>
+  <li class="swatches__item"><span class="swatches__chip" style="--swatch: #f6eddc"></span>Cream</li>
+</ul>
 
 <div class="callout">
 
@@ -93,7 +99,6 @@ A custom alphabet, like lettering on a hand-painted village sign, and a harvest 
 
 *2013 · Brand designer. I lettered the wordmark and drew it up as a vector.*
 
-<!-- TODO (Marius): who or what Haitucova is, whether it was a client project, and whether the wordmark was used. -->
 
 ![The Haitucova wordmark: hand-lettered in a single red line, with one long stroke sweeping up through the H and over the rest of the word](./haitucova/logo.png)
 
@@ -145,4 +150,4 @@ One long stroke rises through the **H**, crosses the **t** and arcs over the res
 
 ## What I learned
 
-Many of these names already held an image: a wave, a heart, a skateboard. The job was often to find it and take everything else away.
+Every mark here had to survive everywhere it went. The Horn of Plenty cornucopia had to print, stamp, embroider and burn into wood without redrawing, and each logo had to read as clearly on a phone screen as on a sign. That meant finding the one idea that carries a brand and cutting everything else. It's how I still work, on brands and products alike.
