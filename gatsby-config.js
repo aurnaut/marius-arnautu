@@ -54,6 +54,10 @@ module.exports = {
             options: {
               maxWidth: 900,
               quality: 90,
+              // Lets logos drawn on transparency sit on the page's own colour in both themes
+              backgroundColor: `transparent`,
+              // The blurred preview would show through the transparent parts
+              disableBgImageOnAlpha: true,
             },
           },
         ],

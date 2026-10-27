@@ -71,7 +71,7 @@ const ArnautusLibraryCover = ({ title }) => (
     <g fill="none" stroke="#3A16D3" strokeWidth="8">
       <path d="M62 196H494V468H62Z" />
       <path className="library-cover__spine" d="M278 196V468" />
-      <path d="M62 196L90 168H522V440L494 468M494 196L522 168" strokeLinejoin="miter" strokeLinecap="square" />
+      <path d="M62 196L90 168H522V440L494 468M494 196L522 168" strokeLinejoin="miter" />
     </g>
     <g stroke="#EFB940" strokeWidth="8">
       {extras.map(({ standing, flat, colour }, i) => {
