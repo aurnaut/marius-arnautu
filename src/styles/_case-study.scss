@@ -370,6 +370,37 @@ $flow-dot: 20px;
   }
 }
 
+// For a flow of four boxes
+.diagram--four {
+  @media (min-width: $mq-smartphone) {
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  }
+}
+
+// A box hanging below the second box of the flow. On a phone, where the flow stacks, it sits indented
+// beside a sideways arrow, so it doesn't read as the next step down.
+.diagram__branch {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  padding-left: 15px;
+
+  .diagram__arrow {
+    transform: none;
+  }
+
+  @media (min-width: $mq-smartphone) {
+    grid-template-columns: none;
+    grid-column: 3;
+    grid-row: 2;
+    padding-left: 0;
+
+    .diagram__arrow {
+      transform: rotate(90deg);
+    }
+  }
+}
+
 .diagram__box {
   padding: 15px 15px 9px;
   border: 1px solid var(--rule);
