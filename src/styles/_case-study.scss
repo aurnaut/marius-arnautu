@@ -149,6 +149,12 @@
     margin: 30px 0;
   }
 
+  // A recording of a phone on the page's own background: centred at about a phone's width rather than the full column
+  .phone-video {
+    width: min(100%, 380px);
+    margin: 40px auto;
+  }
+
   // Breaks out of the reading column to the page's margins, in line with the header
   .bleed {
     width: 100cqw;
@@ -198,6 +204,25 @@
   .only-narrow {
     @media (min-width: $mq-smartphone) {
       display: none;
+    }
+  }
+
+  // Two images of the same screen, the second laid over the first and shown on hover
+  .hover-swap {
+    position: relative;
+
+    > p:last-child {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    &:hover > p:last-child {
+      opacity: 1;
     }
   }
 
