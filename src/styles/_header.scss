@@ -59,6 +59,65 @@ header {
   }
 }
 
+// Where the covers menu doesn't fit beside the column, the date stays at the top of the page and scrolls away,
+// and the logo and the theme toggle sit at either end of a rounded bar floating just above the bottom of the screen,
+// in reach of a thumb, with the covers between them. The bar is drawn by the header, so it's there on pages without
+// the covers too, on the page's own colour so the writing passes under it, and clear of the home indicator.
+// The page keeps room under its footer for it.
+$bottom-bar-bottom: calc(#{$bottom-bar-inset} + env(safe-area-inset-bottom));
+
+@media (max-width: $covers-nav-beside - 1px) {
+  .site-header > div {
+    justify-content: flex-end;
+  }
+
+  .site-header::after {
+    content: '';
+    position: fixed;
+    right: $bottom-bar-inset;
+    bottom: $bottom-bar-bottom;
+    left: $bottom-bar-inset;
+    z-index: 2;
+    height: $bottom-bar-height;
+    background: var(--bar);
+    border: 1px solid var(--rule);
+    border-radius: $bottom-bar-radius;
+
+    // Frosted where the browser can blur what's behind it, the page showing through softly as it scrolls,
+    // still mostly the page's colour so the faded covers stay clear over busy images
+    @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+      background: color-mix(in srgb, var(--bar) 75%, transparent);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      backdrop-filter: blur(16px) saturate(1.4);
+    }
+  }
+
+  .logo-link,
+  .theme-toggle {
+    position: fixed;
+    z-index: 3;
+  }
+
+  .logo-link {
+    bottom: calc(#{$bottom-bar-inset + ($bottom-bar-height - $bottom-bar-logo-height) * 0.5} + env(safe-area-inset-bottom));
+    left: $bottom-bar-inset + $bottom-bar-margin;
+  }
+
+  .logo {
+    width: $bottom-bar-logo-width;
+  }
+
+  // Set in by the button's padding around the icon, so the icon keeps the same margin as the logo
+  .theme-toggle {
+    right: $bottom-bar-inset + $bottom-bar-margin - 5px;
+    bottom: calc(#{$bottom-bar-inset + ($bottom-bar-height - 32px) * 0.5} + env(safe-area-inset-bottom));
+  }
+
+  .main-wrapper {
+    padding-bottom: calc(#{$bottom-bar-inset + $bottom-bar-height} + env(safe-area-inset-bottom));
+  }
+}
+
 // Where there's room beside the reading column, the logo stays in the top left corner as the page scrolls,
 // the covers menu under it, and the theme toggle in the bottom left corner. The header keeps the logo's height,
 // so the date stays centred on where the logo starts and the covers start under it.
