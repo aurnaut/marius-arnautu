@@ -1,6 +1,6 @@
 // The covers menu. Where there's room beside the reading column, it's a column under the logo, in line with it,
 // that stays in view under the logo as the page scrolls, each cover's title showing beside it on hover or focus.
-// Where there isn't, it's a row under the header that scrolls sideways, the titles left to screen readers.
+// Where there isn't, it's a row along the bottom of the screen that scrolls sideways, the titles left to screen readers.
 // The covers sit over the reading column's area rather than beside it, so the column stays centred on the page.
 $covers-nav-gap: 12px;
 
@@ -91,6 +91,26 @@ $covers-nav-gap: 12px;
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+// Where there isn't room beside the column, the row sits in the bar along the bottom of the screen the header draws,
+// between the logo and the theme toggle, a divider either side of it the covers' height.
+// The covers scroll right up to the dividers, set in from them while the row is at either end.
+@media (max-width: $covers-nav-beside - 1px) {
+  .covers-nav {
+    position: fixed;
+    right: $bottom-bar-side;
+    bottom: calc(#{$bottom-bar-inset + $bottom-bar-padding} + env(safe-area-inset-bottom));
+    left: $bottom-bar-side;
+    z-index: 3;
+    padding: 0;
+    border-right: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+
+    ul {
+      padding: 0 $bottom-bar-padding;
+    }
+  }
 }
 
 @media (min-width: $covers-nav-beside) {
