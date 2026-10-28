@@ -30,22 +30,19 @@ const ThemeToggle = () => {
 
   return (
     <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={label} title={label}>
-      {/* Flat, square-edged shapes in the palette, like the background graphics */}
+      {/* Drawn in thin outlines, like the logo */}
       {theme === 'dark' && (
         <svg className="theme-toggle__sun" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <circle cx="12" cy="12" r="5" />
+          <circle cx="12" cy="12" r="4.5" />
           {[0, 45, 90, 135, 180, 225, 270, 315].map(angle => (
-            <rect key={angle} x="11" y="1" width="2" height="4" transform={`rotate(${angle} 12 12)`} />
+            <path key={angle} d="M12 1.5L12 4.5" transform={`rotate(${angle} 12 12)`} />
           ))}
         </svg>
       )}
+      {/* A disc of radius 9 with one of radius 7 cut from its top right, as the outline of what's left */}
       {theme === 'light' && (
         <svg className="theme-toggle__moon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <mask id="theme-toggle-moon-cut">
-            <rect width="24" height="24" fill="white" />
-            <circle cx="17" cy="7" r="7" fill="black" />
-          </mask>
-          <circle cx="12" cy="12" r="9" mask="url(#theme-toggle-moon-cut)" />
+          <path d="M11.23 3.03A9 9 0 1 0 20.97 12.77A7 7 0 0 1 11.23 3.03Z" />
         </svg>
       )}
     </button>

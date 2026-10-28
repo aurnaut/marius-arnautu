@@ -9,7 +9,7 @@ import GraphicsAnimation from "../components/graphics-animation";
 const IndexPage = ({ data}) => {
   const posts = data.allMarkdownRemark.edges;
   return (
-  <Layout showCoversNav={false} narrow>
+  <Layout coversBeside={false} narrow>
     <Seo title="Home" />
     <GraphicsAnimation />
     <h1 className="tagline">
