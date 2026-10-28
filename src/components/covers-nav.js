@@ -16,7 +16,7 @@ const useBeforePaint = typeof window === 'undefined' ? useEffect : useLayoutEffe
 // Each cover is its project folder's cover.svg, matched to the project by the folder its slug names,
 // cut out of the theme's foreground colour, like the logo. The one being viewed keeps its colours,
 // drawn inline from the same file, so the theme can recolour it.
-const CoversNav = () => {
+const CoversNav = ({ beside = true }) => {
   const { allMarkdownRemark, allFile } = useStaticQuery(graphql`
     query {
       allMarkdownRemark(filter: { frontmatter: { type: { in: ["design", "development"] } }}, sort: { order: DESC, fields: [frontmatter___date] }) {
@@ -93,7 +93,7 @@ const CoversNav = () => {
   }, []);
 
   return (
-    <nav className="covers-nav" aria-label="Projects">
+    <nav className={beside ? "covers-nav" : "covers-nav covers-nav--bar-only"} aria-label="Projects">
       <ul ref={list}>
         {projects.map(({ fields: { slug }, frontmatter: { title, navTitle } }) => (
           <li key={slug}>

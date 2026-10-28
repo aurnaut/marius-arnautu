@@ -107,8 +107,10 @@ $covers-nav-gap: 12px;
     border-right: 1px solid var(--rule);
     border-left: 1px solid var(--rule);
 
+    // Spaced wider than beside the column, so the covers don't crowd each other in the bar
     ul {
-      padding: 0 $bottom-bar-padding;
+      gap: 28px;
+      padding: 0 $bottom-bar-spacing;
     }
   }
 }
@@ -121,6 +123,11 @@ $covers-nav-gap: 12px;
   .covers-nav,
   .main-wrapper {
     grid-area: 1 / 1;
+  }
+
+  // Pages that list the projects themselves leave the covers out beside the column
+  .covers-nav--bar-only {
+    display: none;
   }
 
   .covers-nav {

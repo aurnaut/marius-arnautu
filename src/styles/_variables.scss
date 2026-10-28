@@ -19,15 +19,17 @@ $bleed-covers-inset: $covers-nav-size + 20px;
 // Where the covers menu doesn't fit beside the column, the bar along the bottom of the screen it shares with
 // the logo and the theme toggle: as tall as a cover with room above and below, the covers between the other two.
 // It floats a little in from the screen's edges, the logo and toggle set in from its own ends.
+// The room is all across it rather than above and below, so the bar stays low on the screen.
 $bottom-bar-padding: 12px;
+$bottom-bar-spacing: 20px;
 $bottom-bar-height: $covers-nav-size + 2 * $bottom-bar-padding;
 $bottom-bar-inset: 12px;
-$bottom-bar-margin: 16px;
+$bottom-bar-margin: 24px;
 $bottom-bar-radius: 20px;
 // The logo a little smaller there, to sit within the bar's height alongside the covers
 $bottom-bar-logo-width: 22px;
 $bottom-bar-logo-height: math.div($bottom-bar-logo-width * 38.1, 26.2);
-$bottom-bar-side: $bottom-bar-inset + $bottom-bar-margin + $bottom-bar-logo-width + $bottom-bar-padding;
+$bottom-bar-side: $bottom-bar-inset + $bottom-bar-margin + $bottom-bar-logo-width + $bottom-bar-spacing;
 // The widest a medium bleed gets: room for detail the column is too narrow for, without spanning a wide screen
 $bleed-medium-width: 1100px;
 
