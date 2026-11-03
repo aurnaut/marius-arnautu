@@ -768,7 +768,7 @@ $experience-one-line: 740px;
 .logo-wall {
   // minmax(0, …) lets the columns shrink below an SVG's natural width
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
   padding: 0;
   list-style: none;
@@ -794,8 +794,8 @@ $experience-one-line: 740px;
     object-fit: contain;
   }
 
-  // A logo left alone on the last row of a phone's three columns sits in the middle
-  &:last-child:nth-child(3n + 1) {
+  // A logo left alone on the last row of a phone's two columns sits in the middle
+  &:last-child:nth-child(2n + 1) {
     grid-column: 1 / -1;
 
     @media (min-width: $mq-smartphone) {
@@ -947,8 +947,20 @@ $marn-pale: #ff8fb8 #ffa184 #ffc27a #ffe37a #c4ec8c #7fe8c6 #86d6f5 #9eb2ff #c5a
   --marn-ink: #1a1919;
 }
 
+// At rest the word is filled with the ink itself, not the gradient, so it never falls back to the stops' default black
+// where a browser can't resolve the mixed stop colours. It takes the gradient while it plays, and keeps it on the way
+// out until the colours have faded back into the ink.
 .marn-word path {
-  fill: url(#marn-gradient);
+  fill: var(--marn-ink);
+  transition: fill 0s 0.8s;
+  transition-behavior: allow-discrete;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-wall__item.is-playing .marn-word path {
+    fill: url(#marn-gradient);
+    transition-delay: 0s;
+  }
 }
 
 .marn-stop {
@@ -1584,6 +1596,11 @@ $marn-pale: #ff8fb8 #ffa184 #ffc27a #ffe37a #c4ec8c #7fe8c6 #86d6f5 #9eb2ff #c5a
   // Newused's two blues, lightened with the deeper one still the deeper
   --newused-deep: #6f78f0;
   --newused-bright: #a3b4ff;
+
+  // Skatee's deep green is lost on the dark page, so it takes a lighter green of the same hue
+  .skatee {
+    fill: #5ec24a;
+  }
 
   // Sushilove's lettering and nori, a soft sage rather than the text colour
   .sushilove {
